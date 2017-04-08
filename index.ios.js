@@ -1,31 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 export default class SightTransit extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={[styles.container, styles.top]}>
+          <Image style={styles.image} source={require('./img/sighttransit_braille.png')} />
+          <Text style={styles.text}>
+            My Places
+          </Text>
+        </View>
+        <View style={[styles.container, styles.bot]}>
+          <Image style={styles.image} source={require('./img/sighttransit_braille.png')} />
+          <Text style={styles.text}>
+            New Trip
+          </Text>
+        </View>
       </View>
     );
   }
@@ -34,20 +31,29 @@ export default class SightTransit extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'center'
   },
-  welcome: {
-    fontSize: 20,
+  text: {
+    fontSize: 32,
+    fontWeight: 'bold',
     textAlign: 'center',
-    margin: 10,
+    marginLeft: 20,
+    marginTop: 10
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+  image: {
+    alignItems: 'center'
+  },
+  top: {
+
+  },
+  bot: {
+    backgroundColor: '#A9A9A9'
+  }
 });
 
 AppRegistry.registerComponent('SightTransit', () => SightTransit);
