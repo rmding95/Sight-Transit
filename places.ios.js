@@ -13,11 +13,18 @@ import {
 class PlacesScreen extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>Hi</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+});
 
 module.exports = PlacesScreen;

@@ -32,9 +32,10 @@ class HomeScreen extends React.Component {
   }*/
 
   _onPress = () => {
+    console.log("press");
     this.props.navigator.push({
       title: "Place",
-      component: PlaceScreen
+      component: PlacesScreen
     });
   }
 
@@ -42,7 +43,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
           <View style={[styles.container, styles.top]}>
-            <TouchableHighlight onPress={() => this._onPress}>
+            <TouchableHighlight onPress={() => this._onPress()}>
               <View>
                 <Image style={styles.image} source={require('./img/home.png')} />
                 <Text style={styles.text}>
