@@ -4,26 +4,22 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TouchableHighlight,
+  NavigatorIOS
 } from 'react-native';
+var HomeScreen = require('./home.ios.js');
 
-export default class SightTransit extends Component {
+export default class SightTransit extends React.Component {
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={[styles.container, styles.top]}>
-          <Image style={styles.image} source={require('./img/sighttransit_braille.png')} />
-          <Text style={styles.text}>
-            My Places
-          </Text>
-        </View>
-        <View style={[styles.container, styles.bot]}>
-          <Image style={styles.image} source={require('./img/sighttransit_braille.png')} />
-          <Text style={styles.text}>
-            New Trip
-          </Text>
-        </View>
-      </View>
+      <NavigatorIOS style={styles.container}
+        initialRoute={{
+          title: 'Home',
+          component: HomeScreen,
+        }}
+      />
     );
   }
 }

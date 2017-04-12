@@ -1,31 +1,67 @@
-/**
- * home page template
- * TODO: implement navigation
- */
-
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  TouchableHighlight,
+  NavigatorIOS
 } from 'react-native';
+var PlacesScreen = require('./places.ios.js');
 
-class Homepage extends Component {
+class HomeScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+  /*static propTypes = {
+    title: PropTypes.string.isRequired,
+    navigator: PropTypes.object.isRequired,
+  }*/
+
+  /*constructor(props, context) {
+    super(props, context);
+    this._onForward = this._onForward.bind(this);
+  }
+
+  _onForward() {
+    this.props.navigator.push({
+      title: 'Scene ' + nextIndex,
+    });
+  }*/
+
+  _onPress = () => {
+    this.props.navigator.push({
+      title: "Place",
+      component: PlaceScreen
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.myPlacesCon}>
-            <Text style={styles.myPlacesTxt}>
-                My Places
+          <View style={[styles.container, styles.top]}>
+            <TouchableHighlight onPress={() => this._onPress}>
+              <View>
+                <Image style={styles.image} source={require('./img/home.png')} />
+                <Text style={styles.text}>
+                  My Places
+                </Text>
+              </View>
+            </TouchableHighlight>
+          </View>
+        <View style={[styles.container, styles.bot]}>
+          <TouchableHighlight onPress={() => this._onPress}>
+            <View>
+            <Image style={styles.image} source={require('./img/placeholder.png')} />
+            <Text style={styles.text}>
+              New Trip
             </Text>
+            </View>
+          </TouchableHighlight>
         </View>
-        <View style={styles.newTripCont}>
-            <Text style={styles.newTripTxt}>
-                New Trip
-            </Text>
-        </View>
-    </View>
+      </View>
     );
   }
 }
@@ -33,32 +69,29 @@ class Homepage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    justifyContent: 'center'
   },
-  myPlacesCont: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  newTripCont: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-  },
-  newTripTxt: {
-    fontSize: 20,
+  text: {
+    fontSize: 32,
+    fontWeight: 'bold',
     textAlign: 'center',
-    margin: 10,
+    marginLeft: 20,
+    marginTop: 10
   },
-  myPlacesTxt: {
+  instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+  image: {
+    alignItems: 'center'
+  },
+  top: {
+
+  },
+  bot: {
+    backgroundColor: '#A9A9A9'
+  }
 });
 
-AppRegistry.registerComponent('Homepage', () => Homepage);
+module.exports = HomeScreen;
