@@ -9,6 +9,7 @@ import {
   NavigatorIOS
 } from 'react-native';
 var PlacesScreen = require('./places.ios.js');
+var TripEntryScreen = require('./tripentry.ios.js');
 
 class HomeScreen extends React.Component {
 
@@ -39,6 +40,14 @@ class HomeScreen extends React.Component {
     });
   }
 
+  _onPress1 = () => {
+    console.log("press");
+    this.props.navigator.push({
+      title: "Place",
+      component: TripEntryScreen
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -53,7 +62,7 @@ class HomeScreen extends React.Component {
             </TouchableHighlight>
           </View>
         <View style={[styles.container, styles.bot]}>
-          <TouchableHighlight onPress={() => this._onPress}>
+          <TouchableHighlight onPress={() => this._onPress1()}>
             <View>
             <Image style={styles.image} source={require('./img/placeholder.png')} />
             <Text style={styles.text}>
