@@ -15,13 +15,13 @@ class PlacesScreen extends Component {
         return (
           <View style={styles.container} accessible={true} accessibilityLabel={'Home'}>
             <View style={styles.box1}>
-              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#fff'}}>HOME</Text>
+              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>HOME</Text>
             </View>
             <View style={styles.box2} accessible={true} accessibilityLabel={'School'}>
-              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#f9ec00'}}>SCHOOL</Text>
+              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#f9ec00',fontFamily: 'APHont'}}>SCHOOL</Text>
             </View>
             <View style={styles.box3} accessible={true} accessibilityLabel={'Work'}>
-              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a'}}>WORK</Text>
+              <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>WORK</Text>
             </View>
           </View>
 
