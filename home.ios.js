@@ -53,9 +53,9 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
           <View style={[styles.container, styles.top]}>
             <TouchableHighlight onPress={() => this._onPress()}>
-              <View>
+              <View accessible={true} accessibilityLabel={'My Places'}>
                 <Image style={styles.image} source={require('./img/home.png')} />
-                <Text style={styles.text}>
+                <Text style={{fontSize: 30,fontWeight: 'bold',color: '#2a2a2a'}}>
                   My Places
                 </Text>
               </View>
@@ -63,9 +63,9 @@ class HomeScreen extends React.Component {
           </View>
         <View style={[styles.container, styles.bot]}>
           <TouchableHighlight onPress={() => this._onPress1()}>
-            <View>
+            <View accessible={true} accessibilityLabel={'New Trip'}>
             <Image style={styles.image} source={require('./img/placeholder.png')} />
-            <Text style={styles.text}>
+            <Text style={{fontSize: 30,fontWeight: 'bold',color: '#fff'}}>
               New Trip
             </Text>
             </View>
@@ -79,28 +79,29 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center'
-  },
-  text: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginLeft: 20,
-    marginTop: 10
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
   },
   image: {
-    alignItems: 'center'
+    alignItems: 'center',
+    width: 110,
+    height: 110,
+    resizeMode: 'contain',
+    marginBottom: 20
   },
   top: {
-
+    backgroundColor: '#fff',
+    height:333,
+    alignSelf: 'stretch'
   },
   bot: {
-    backgroundColor: '#A9A9A9'
+    backgroundColor: '#2a2a2a',
+    height:333,
+    alignSelf: 'stretch'
   }
 });
 
