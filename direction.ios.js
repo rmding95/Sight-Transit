@@ -13,6 +13,8 @@ var Direction1Screen = require('./direction1.ios.js');
 // this is the initial confirmation of destination
 // todo: directions are not dynamic (walk, bus, walk)
 // pull from google maps and fed here
+// style is a bit weird here as well.
+// issue adding border to each list item when it works fine in another page...
 class DirectionScreen extends Component {
 
   constructor(props) {
