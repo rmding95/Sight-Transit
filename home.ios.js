@@ -9,7 +9,8 @@ import {
   NavigatorIOS
 } from 'react-native';
 var PlacesScreen = require('./places.ios.js');
-var TripEntryScreen = require('./tripentry.ios.js');
+// var TripEntryScreen = require('./tripentry.ios.js');
+var DestinationScreen = require('./destination.ios.js');
 
 class HomeScreen extends React.Component {
 
@@ -41,10 +42,10 @@ class HomeScreen extends React.Component {
   }
 
   _onPress1 = () => {
-    console.log("press");
+    console.log("pressed on destination button");
     this.props.navigator.push({
-      title: "Place",
-      component: TripEntryScreen
+      title: "Destination",
+      component: DestinationScreen
     });
   }
 
