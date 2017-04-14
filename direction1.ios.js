@@ -5,8 +5,10 @@ import {
   Text,
   View,
   ListView,
-  Button
+  Button,
+  TouchableHighlight
 } from 'react-native';
+var DirectionDetailScreen = require('./directiondetail.ios.js');
 
 // this page gives off initial directions
 
@@ -35,9 +37,17 @@ class Direction1Screen extends Component {
     };
   }
 
+  _onPress = () => {
+    this.props.navigator.push({
+        title: 'Detail',
+        component: DirectionDetailScreen
+    })
+  }
+
     render() {
         return (
             <View style={styles.container}>
+                <TouchableHighlight onPress={() => this._onPress()}>
                 <ListView
                     style={styles.list}
                     dataSource={this.state.dataSource}
@@ -47,6 +57,7 @@ class Direction1Screen extends Component {
                     //onEndReach={redirect}
                     />}
                 />
+                </TouchableHighlight>
             </View>
         );
     }

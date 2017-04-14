@@ -5,16 +5,17 @@ import {
   Text,
   View,
   ListView,
-  Button
+  Button,
+  TouchableHighlight
 } from 'react-native';
-
+var BusScreen = require('./bus.ios.js');
 // this page is for the arrival at destination
 
 // todo: for somse reason, the padding is having some issues
 // it cuts off the list...
 
 // for now, it is hardcoded and not dynamic like the direction.ios.js
-class Direction1Screen extends Component {
+class Direction2Screen extends Component {
   constructor() {
     super();
 
@@ -28,9 +29,18 @@ class Direction1Screen extends Component {
     };
   }
 
+  _onPress = () => {
+        console.log("pressed on continue button");
+        this.props.navigator.push({
+            title: "Bus",
+            component: BusScreen
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>
+                <TouchableHighlight onPress={() => this._onPress()}>
                 <ListView
                     style={styles.list}
                     dataSource={this.state.dataSource}
@@ -40,6 +50,7 @@ class Direction1Screen extends Component {
                     //onEndReach={redirect}
                     />}
                 />
+                </TouchableHighlight>
             </View>
         );
     }
@@ -62,4 +73,4 @@ const styles = StyleSheet.create({
     }
 });
 
-module.exports = Direction1Screen;
+module.exports = Direction2Screen;
