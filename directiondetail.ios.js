@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
+
 var Direction2 = require('./direction2.ios.js');
 
 class DirectionDetailScreen extends Component {

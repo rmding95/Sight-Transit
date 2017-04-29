@@ -28,7 +28,7 @@ class DirectionScreen extends Component {
     _onPress = () => {
         console.log("pressed on continue button");
         this.props.navigator.push({
-            title: "Direction1",
+            title: "Direction",
             component: Direction1Screen
         });
     }

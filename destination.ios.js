@@ -23,6 +23,7 @@ var SpeechToText = require('react-native-speech-to-text-ios');
 // this page isn't necessary either.
 
 //Google Place API Key: AIzaSyBb7lDyjRIlU7STXU8d4WueMDk5bI3sxrU
+// this page isn't necessary either if the other is kept.
 class DestinationScreen extends Component {
     constructor(props) {
         super(props);
