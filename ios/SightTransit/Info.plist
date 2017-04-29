@@ -46,7 +46,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>SightTransit would like to use Bluetooth in order to determine the proximity of nearby buses and bus stops.</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>

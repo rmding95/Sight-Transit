@@ -15,7 +15,7 @@ var DirectionScreen = require('./direction.ios.js');
 // gonna have to look back on flexbox. 
 
 // i do believe tripentry.ios.js is no longer needed. although,
-// this page isn't necessary either.
+// this page isn't necessary either if the other is kept.
 class DestinationScreen extends Component {
     constructor(props) {
         super(props);
