@@ -138,6 +138,12 @@ class Direction2Screen extends Component {
                     Minor: {rowData.minor ? rowData.minor : 'NA'}
                 </Text>
                 <Text>
+                    Distance: {rowData.rssi ? rowData.accuracy.rssi : 'NA'}m
+                </Text>
+                <Text>
+                    Proximity: {rowData.proximity ? rowData.proximity : 'NA'}m
+                </Text>
+                <Text>
                     Distance: {rowData.accuracy ? rowData.accuracy.toFixed(2) : 'NA'}m
                 </Text>
             </View>
