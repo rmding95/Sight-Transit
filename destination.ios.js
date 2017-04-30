@@ -27,7 +27,7 @@ var SpeechToText = require('react-native-speech-to-text-ios');
 class DestinationScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' };
+        this.state = { text: '' , talking: false};
     }
 
    _onPress = (location) => {
@@ -37,6 +37,17 @@ class DestinationScreen extends Component {
         component: DirectionScreen,
         passProps: {myProp: location}
         });
+   }
+
+   _talk = () => {
+       if (this.state.talking) {
+           this.state.talking = false;
+           SpeechToText.finishRecognition();
+           //console.log(this.state.talkingResult);
+       } else {
+           this.state.talking = true;
+           SpeechToText.startRecognition("en-US");
+       }
    }
 
    componentDidMount() {
@@ -58,13 +69,12 @@ class DestinationScreen extends Component {
             (result) => {
                 if (result.error) {
                     alert(JSON.stringify(result.error));
-                } else {
-                    console.log(result.bestTranscription.formattedString);
+                } else if (result.isFinal) {
+                    this.setState({talkingResult: result.bestTranscription.formattedString});
+                    //console.log(result.bestTranscription.formattedString);
                 }        
             }
         );
-
-        SpeechToText.startRecognition("en-US");
    }
 
    componentWillUnmount() {
@@ -82,7 +92,14 @@ class DestinationScreen extends Component {
                 <View>
                     <Text> Where are you headed? </Text>
                     <Text> {this.state.initialPosition} </Text>
+                    <Text> Result: {this.state.talkingResult} </Text>
                 </View>
+
+                <Button
+                    onPress={() => this._talk()}
+                    title="Press to Talk"
+                    accessibilityLabel="Continue"
+                />
 
                 <GooglePlacesAutocomplete
                     styles={{

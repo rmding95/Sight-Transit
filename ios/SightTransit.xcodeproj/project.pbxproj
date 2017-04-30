@@ -253,7 +253,7 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		D041766F1EB544AD0083709A /* PBXContainerItemProxy */ = {
+		D05569971EB54C8600FAA4EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */;
 			proxyType = 2;
@@ -288,10 +288,10 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
-		AC7B81483F4942E4B88CEAFC /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
 		85473676945C476C8F9057C9 /* RNBluetoothState.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBluetoothState.xcodeproj; path = "../node_modules/react-native-bluetooth-state/RNBluetoothState.xcodeproj"; sourceTree = "<group>"; };
 		884262D027BE49A8B22D6456 /* RNiBeacon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNiBeacon.xcodeproj; path = "../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon.xcodeproj"; sourceTree = "<group>"; };
+		9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
+		AC7B81483F4942E4B88CEAFC /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
 		BD9854BBBD434C37A5B0EF86 /* libRNiBeacon.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNiBeacon.a; sourceTree = "<group>"; };
 		D01C587C1EA04C4B007CDEF2 /* APHont-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-Bold.ttf"; path = "../fonts/APHont/APHont-Bold.ttf"; sourceTree = "<group>"; };
 		D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-BoldItalic.ttf"; path = "../fonts/APHont/APHont-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -508,12 +508,9 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-<<<<<<< HEAD
 				9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */,
-=======
 				884262D027BE49A8B22D6456 /* RNiBeacon.xcodeproj */,
 				85473676945C476C8F9057C9 /* RNBluetoothState.xcodeproj */,
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -554,10 +551,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D04176531EB544AD0083709A /* Products */ = {
+		D05569791EB54C8600FAA4EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D04176701EB544AD0083709A /* libRNSpeechToTextIos.a */,
+				D05569981EB54C8600FAA4EB /* libRNSpeechToTextIos.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -722,17 +719,16 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-<<<<<<< HEAD
-					ProductGroup = D04176531EB544AD0083709A /* Products */;
-					ProjectRef = 9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */;
-=======
 					ProductGroup = 6526B8DF1EB540D000A9CF1D /* Products */;
 					ProjectRef = 85473676945C476C8F9057C9 /* RNBluetoothState.xcodeproj */;
 				},
 				{
 					ProductGroup = 6526B8B51EB368B800A9CF1D /* Products */;
 					ProjectRef = 884262D027BE49A8B22D6456 /* RNiBeacon.xcodeproj */;
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
+				},
+				{
+					ProductGroup = D05569791EB54C8600FAA4EB /* Products */;
+					ProjectRef = 9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -935,11 +931,11 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D04176701EB544AD0083709A /* libRNSpeechToTextIos.a */ = {
+		D05569981EB54C8600FAA4EB /* libRNSpeechToTextIos.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNSpeechToTextIos.a;
-			remoteRef = D041766F1EB544AD0083709A /* PBXContainerItemProxy */;
+			remoteRef = D05569971EB54C8600FAA4EB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1091,12 +1087,9 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = SightTransitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1104,10 +1097,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1126,12 +1115,9 @@
 				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = SightTransitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1139,10 +1125,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1162,12 +1144,9 @@
 				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = SightTransit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1190,12 +1169,9 @@
 				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = SightTransit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1224,22 +1200,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = "SightTransit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1267,22 +1236,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
-=======
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				INFOPLIST_FILE = "SightTransit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1312,10 +1274,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SightTransit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1341,10 +1299,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
-=======
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
->>>>>>> 4a368d3a591a7074f88e6de4a3ea0f8d3eb653ff
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SightTransit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
