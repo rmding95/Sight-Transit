@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 
 var DirectionScreen = require('./direction.ios.js');
-var {GooglePlacesAutocomplete} = require('react-native-google-places-autocomplete');
 var SpeechToText = require('react-native-speech-to-text-ios');
+var googlePlaceApiKey = "AIzaSyBb7lDyjRIlU7STXU8d4WueMDk5bI3sxrU";
 
 // this page allows users to input their destination
 // todo: style is a bit off... navigator bar requires margin. smh.
@@ -43,7 +43,10 @@ class DestinationScreen extends Component {
        if (this.state.talking) {
            this.state.talking = false;
            SpeechToText.finishRecognition();
-           //console.log(this.state.talkingResult);
+           // confirm destination with user 
+
+           // send request to google place api
+
        } else {
            this.state.talking = true;
            SpeechToText.startRecognition("en-US");
@@ -71,7 +74,7 @@ class DestinationScreen extends Component {
                     alert(JSON.stringify(result.error));
                 } else if (result.isFinal) {
                     this.setState({talkingResult: result.bestTranscription.formattedString});
-                    //console.log(result.bestTranscription.formattedString);
+                    var list = callGooglePlaceApi(this.state.talkingResult, this.state.initialPosition);
                 }        
             }
         );
@@ -101,58 +104,6 @@ class DestinationScreen extends Component {
                     accessibilityLabel="Continue"
                 />
 
-                <GooglePlacesAutocomplete
-                    styles={{
-                        textInputContainer: {
-                        borderTopWidth: 50,
-                        borderBottomWidth:0
-                        },
-                        textInput: {
-                        marginLeft: 0,
-                        marginRight: 0,
-
-                        height: 38,
-                        color: '#5d5d5d',
-                        fontSize: 16
-                        },
-                        predefinedPlacesDescription: {
-                        color: '#1faadb'
-                        },
-                    }}
-                    placeholder='Search'
-                    minLength={2}
-                    autoFocus={true}
-                    listViewDisplayed='auto'
-                    fetchDetails={true}
-                    renderDescription={(row) => row.description}
-                    onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                    console.log(data);
-                    console.log(details);
-                    }}
-                    query={{
-                    // available options: https://developers.google.com/places/web-service/autocomplete
-                    key: 'AIzaSyBb7lDyjRIlU7STXU8d4WueMDk5bI3sxrU',
-                    language: 'en', // language of the results
-                    types: '(geocode)', // default: 'geocode'
-                    }}
-                    styles={{
-                    description: {
-                        fontWeight: 'bold',
-                    },
-                    predefinedPlacesDescription: {
-                        color: '#1faadb',
-                    },
-                    }}
-
-                    currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
-                    currentLocationLabel="Current location"
-                    nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
-                    GooglePlacesSearchQuery={{
-                    // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
-                    rankby: 'distance'
-                    }}
-                />
-
                 <Button
                     onPress={() => this._onPress(this.state.text)}
                     title="Continue"
@@ -163,6 +114,29 @@ class DestinationScreen extends Component {
     }
 }
 
+async function callGooglePlaceApi(query, initialPosition) {
+    var coords = JSON.parse(initialPosition);
+    var baseUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+    // might want to check if we get the initial position
+    var lat = coords.coords.latitude;
+    var long = coords.coords.longitude;
+    var url = baseUrl + query + "&location=" + lat + "," + long + "&key=" + googlePlaceApiKey;
+    console.log(url);
+    try {
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        let responseJson = await response.json();
+        console.log(responseJson);
+        return responseJson;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 const styles = StyleSheet.create({
     container: {

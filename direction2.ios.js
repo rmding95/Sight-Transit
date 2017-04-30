@@ -73,6 +73,7 @@ class Direction2Screen extends Component {
         // if changed, add into key value data pair of all in range
         this.beaconsDidRage = DeviceEventEmitter.addListener(
             'beaconsDidRange', (data) => {
+                console.log(data);
                 this.setState(
                     {beacon_dataSource: this.state.beacon_dataSource.cloneWithRows(data.beacons)}
                 );
