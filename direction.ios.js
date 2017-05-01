@@ -15,14 +15,24 @@ var Direction1Screen = require('./direction1.ios.js');
 // pull from google maps and fed here
 // style is a bit weird here as well.
 // issue adding border to each list item when it works fine in another page...
+
+// look into creating custom component that takes in route data and returns listview of instructions
 class DirectionScreen extends Component {
 
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    var routeDetails = JSON.parse(props.routeDetails);
+    routeSteps = [];
+    routeDetails.routes[0].legs.forEach(function(element) {
+        element.steps.forEach(function(step) {
+            routeSteps.push(step.html_instructions);
+        }, this);
+    }, this);
     this.state = {
-      dataSource: ds.cloneWithRows(['Walk 6min', 'Bus 10min', 'Walk 2min'])
+      dataSource: ds.cloneWithRows(routeSteps)
     };
+    console.log(this.state.dataSource);
   }
 
     _onPress = () => {
