@@ -23,14 +23,21 @@ class DirectionScreen extends Component {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var routeDetails = JSON.parse(props.routeDetails);
+    var legs = routeDetails.routes[0].legs;
     routeSteps = [];
-    routeDetails.routes[0].legs.forEach(function(element) {
+    legs.forEach(function(element) {
         element.steps.forEach(function(step) {
             routeSteps.push(step.html_instructions);
         }, this);
     }, this);
     this.state = {
-      dataSource: ds.cloneWithRows(routeSteps)
+      dataSource: ds.cloneWithRows(routeSteps),
+      destinationName: props.destinationName,
+      destinationArrivalTime: legs[0].arrival_time,
+      destinationDepartureTime: legs[0].departure_time,
+      destinationDistance: legs[0].distance,
+      destinationDuration: legs[0].duration,
+      destinationAddress: legs[0].end_address
     };
     console.log(this.state.dataSource);
   }
@@ -47,7 +54,10 @@ class DirectionScreen extends Component {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'Direction'}>
                 <View style={styles.halfHeight}>
-                    <Text style={{fontSize: 20}}>Direction to {this.props.myProp}</Text>
+                    <Text>Directions To {this.state.destinationName}</Text>
+                    <Text>At {this.state.destinationAddress} </Text>
+                    <Text>Distance: {this.state.destinationDistance.text}, Duration: {this.state.destinationDuration.text}</Text>
+                    <Text>Leave at {this.state.destinationDepartureTime.text} and arrive at {this.state.destinationArrivalTime.text}</Text>
                 </View>
                 
                 <ListView
@@ -69,13 +79,14 @@ class DirectionScreen extends Component {
 // border not working for seperator, will have to look into it later
 const styles = StyleSheet.create({
     container: {
-        marginTop: 90,
+        marginTop: 10,
         flex: 1,
     },
     halfHeight: {
         flex: 0.5,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'black'
+        borderBottomColor: 'black',
+        marginTop: 100
     },
     list: {
         flex: 1,
