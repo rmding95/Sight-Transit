@@ -426,7 +426,7 @@ class DestinationScreen extends Component {
        this.props.navigator.push({
            title: "Direction",
            component: DirectionScreen,
-           passProps: {routeDetails: JSON.stringify(this.state.route)}
+           passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
        });
    }
 
@@ -457,6 +457,8 @@ class DestinationScreen extends Component {
             var lastPosition = JSON.stringify(position);
             this.setState({lastPosition});
         });
+
+        var self = this;
 
         // the 'this' is not correctly referring to the class 'this'
         this.subscription = NativeAppEventEmitter.addListener(

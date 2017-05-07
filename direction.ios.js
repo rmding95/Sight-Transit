@@ -24,26 +24,65 @@ class DirectionScreen extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var routeDetails = JSON.parse(props.routeDetails);
     var legs = routeDetails.routes[0].legs;
+    routePreview = [];
     routeSteps = [];
     legs.forEach(function(element) {
         element.steps.forEach(function(step) {
-            routeSteps.push(step.html_instructions);
+            routePreview.push(step.html_instructions);
+            direction = {
+                distance: step.distance, 
+                duration: step.duration,
+                endLocation: step.end_location,
+                startLocation: step.start_location,
+                description: step.html_instructions,
+                type: step.travel_mode,
+                substeps: [],
+            };
+            if (direction.type === "WALKING") {
+                step.steps.forEach(function(substep) {
+                    detailedSteps = {
+                        distance: substep.distance,
+                        duration: substep.duration,
+                        endLocation: substep.end_location,
+                        description: substep.html_instructions,
+                        startLocation: substep.start_location,
+                        maneuver: substep.maneuver
+                    };
+                    direction.substeps.push(detailedSteps);
+                }, this)
+            } else {
+                transitDetails = {
+                    arrivalStop: step.transit_details.arrival_stop,
+                    arrivalTime: step.transit_details.arrival_time,
+                    departureTime: step.transit_details.departure_time,
+                    departureStop: step.transit_details.departure_stop,
+                    headsign: step.transit_details.headsign,
+                    line: step.transit_details.line,
+                    numStops: step.transit_details.num_stops
+                };
+                direction["transitDetails"] = transitDetails;
+            }
+            routeSteps.push(direction);
         }, this);
     }, this);
     this.state = {
-      dataSource: ds.cloneWithRows(routeSteps),
+      dataSource: ds.cloneWithRows(routePreview),
       destinationName: props.destinationName,
       destinationArrivalTime: legs[0].arrival_time,
       destinationDepartureTime: legs[0].departure_time,
       destinationDistance: legs[0].distance,
       destinationDuration: legs[0].duration,
-      destinationAddress: legs[0].end_address
+      destinationAddress: legs[0].end_address,
+      routeSteps: routeSteps
     };
-    console.log(this.state.dataSource);
   }
 
     _onPress = () => {
-        console.log("pressed on continue button");
+        if (routeSteps[0].type === "WALKING") {
+
+        } else {
+            
+        }
         this.props.navigator.push({
             title: "Direction",
             component: Direction1Screen
@@ -54,7 +93,7 @@ class DirectionScreen extends Component {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'Direction'}>
                 <View style={styles.halfHeight}>
-                    <Text>Directions To {this.state.destinationName}</Text>
+                    <Text>Directions to {this.state.destinationName}</Text>
                     <Text>At {this.state.destinationAddress} </Text>
                     <Text>Distance: {this.state.destinationDistance.text}, Duration: {this.state.destinationDuration.text}</Text>
                     <Text>Leave at {this.state.destinationDepartureTime.text} and arrive at {this.state.destinationArrivalTime.text}</Text>
