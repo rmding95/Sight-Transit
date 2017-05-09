@@ -8,7 +8,8 @@ import {
   ListView
 } from 'react-native';
 
-var Direction1Screen = require('./direction1.ios.js');
+var WalkingDirectionScreen = require('./walkingdirection.ios.js');
+var BusDirectionScreen = require('./busdirection.ios.js');
 
 // this is the initial confirmation of destination
 // todo: directions are not dynamic (walk, bus, walk)
@@ -79,14 +80,18 @@ class DirectionScreen extends Component {
 
     _onPress = () => {
         if (routeSteps[0].type === "WALKING") {
-
+            this.props.navigator.push({
+                title: "Walking",
+                component: WalkingDirectionScreen,
+                passProps: {routeSteps: this.state.routeSteps}
+            });
         } else {
-            
+            this.props.navigator.push({
+                title: "Bus",
+                component: BusDirectionScreen,
+                passProps: {routeDetails: this.state.routeSteps}
+            });
         }
-        this.props.navigator.push({
-            title: "Direction",
-            component: Direction1Screen
-        });
     }
 
     render() {

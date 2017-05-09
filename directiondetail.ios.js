@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Beacons                from 'react-native-beacons-manager';
 import BluetoothState         from 'react-native-bluetooth-state';
-var Direction2 = require('./direction2.ios.js');
+var BusInformationScreen = require('./bus.ios.js');
 
 class DirectionDetailScreen extends Component {
 
@@ -29,15 +29,19 @@ class DirectionDetailScreen extends Component {
         identifier: "bus_stop_beacon",
         uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961",
         beacon_dataSource: ds.cloneWithRows([]),
-        arrived: 'false'
+        arrived: 'false',
+        currentDirection: props.currentDirection,
+        routeDetails: props.routeDetails
     }
   }
 
   _onPress = () => {
+    this.state.routeDetails.shift();
     console.log("press");
     this.props.navigator.push({
-      title: "Place",
-      component: Direction2
+      title: "Bus Information",
+      component: BusInformationScreen,
+      passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails}
     });
   }
 
