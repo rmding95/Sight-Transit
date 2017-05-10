@@ -504,11 +504,12 @@ class DestinationScreen extends Component {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'Destination'}>
                 <View>
-                    <Text> Where are you headed? </Text>
+                    <Text style={styles.header}>Where are you headed? </Text>
                 </View>
-
                 <TouchableHighlight onPress={() => this._talk()}>
-                    <Image style={styles.talkButton} source={require('./img/002-sound.png')} />
+                    <View style={styles.square}>
+                        <Image style={styles.talkButton} source={require('./img/002-sound.png')} />
+                    </View>
                 </TouchableHighlight>
 
                 {/*<Button style={styles.talkButton}
@@ -574,15 +575,29 @@ async function callGoogleDirectionApi(origin, destination) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        flexDirection: 'column',
+        marginTop: 70
     },
-    txt: {
-        flex: 0.5
+    header: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontFamily: 'APHont',
+        marginLeft: 30,
+        marginTop: 90
+    },
+    square: {
+        width: 300,
+        height: 300,
+        marginTop: 40,
+        marginLeft: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2a2a2a'
     },
     talkButton: {
-        margin: 10,
-        backgroundColor: '#2a2a2a'
+        backgroundColor: '#2a2a2a',
+        marginLeft: 10,
+        height:130,
+        width:130
     }
     
 });
