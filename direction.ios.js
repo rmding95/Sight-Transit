@@ -98,16 +98,15 @@ class DirectionScreen extends Component {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'Direction'}>
                 <View style={styles.halfHeight}>
-                    <Text>Directions to {this.state.destinationName}</Text>
-                    <Text>At {this.state.destinationAddress} </Text>
-                    <Text>Distance: {this.state.destinationDistance.text}, Duration: {this.state.destinationDuration.text}</Text>
-                    <Text>Leave at {this.state.destinationDepartureTime.text} and arrive at {this.state.destinationArrivalTime.text}</Text>
+                    <Text style={styles.h1}>Directions to {this.state.destinationName}</Text>
+                    <Text style={{fontFamily: 'APHont'}}>{this.state.destinationAddress} </Text>
+                    <Text style={{fontFamily: 'APHont'}}>Distance: {this.state.destinationDistance.text}, Duration: {this.state.destinationDuration.text}</Text>
+                    <Text style={{fontFamily: 'APHont'}}>Leave at {this.state.destinationDepartureTime.text}, and you'll arrive at {this.state.destinationArrivalTime.text}</Text>
                 </View>
                 
                 <ListView
-                    style={styles.list}
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Text style={{textAlign: 'center'}}>{rowData}</Text>}
+                    renderRow={(rowData) => <Text style ={styles.list}>{rowData}</Text>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                 />
                 <Button
@@ -130,18 +129,26 @@ const styles = StyleSheet.create({
         flex: 0.5,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: 'black',
-        marginTop: 100
+        marginTop: 144,
+        marginLeft: 30
+    },
+    h1: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontFamily: 'APHont'
     },
     list: {
-        flex: 1,
-        flexDirection: 'row',
-        paddingLeft: 20
+        marginLeft:30,
+        fontFamily: 'APHont',
+        fontSize: 16
     },
     separator: {
-        height: 1,
-        margin: 40,
+        marginTop: 30,
+        marginBottom: 30,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'gray'
+        borderWidth: 1,
+        borderBottomColor: '#2a2a2a',
+        width:414
 
     }
 });

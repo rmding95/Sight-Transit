@@ -53,8 +53,8 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <TouchableHighlight onPress={() => this._onPress()}>
-          <View style={styles.top}>
-              <View accessible={true} accessibilityLabel={'My Places'}>
+          <View style={styles.top} accessible={true} accessibilityLabel={'My Places'}>
+              <View>
                 <Image style={styles.image} source={require('./img/home.png')} />
                 <Text style={{fontSize: 30,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>
                   MY PLACES
@@ -64,8 +64,8 @@ class HomeScreen extends React.Component {
           </View>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => this._onPress1()}>
-          <View style={styles.bot}>
-            <View accessible={true} accessibilityLabel={'New Trip'}>
+          <View style={styles.bot} accessible={true} accessibilityLabel={'New Trip'}>
+            <View>
             <Image style={styles.image} source={require('./img/placeholder.png')} />
             <Text style={{fontSize: 30,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>
               NEW TRIP
