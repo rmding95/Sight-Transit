@@ -25,7 +25,8 @@ class BusInformationScreen extends Component {
         console.log("pressed on continue button");
         this.props.navigator.push({
             title: "BusArrival",
-            component: BusArrivalScreen
+            component: BusArrivalScreen,
+            passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}
         });
     }
 

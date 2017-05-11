@@ -25,56 +25,16 @@ class DirectionScreen extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var routeDetails = JSON.parse(props.routeDetails);
     var legs = routeDetails.routes[0].legs;
-    routePreview = [];
-    routeSteps = [];
-    legs.forEach(function(element) {
-        element.steps.forEach(function(step) {
-            routePreview.push(step.html_instructions);
-            direction = {
-                distance: step.distance, 
-                duration: step.duration,
-                endLocation: step.end_location,
-                startLocation: step.start_location,
-                description: step.html_instructions,
-                type: step.travel_mode,
-                substeps: [],
-            };
-            if (direction.type === "WALKING") {
-                step.steps.forEach(function(substep) {
-                    detailedSteps = {
-                        distance: substep.distance,
-                        duration: substep.duration,
-                        endLocation: substep.end_location,
-                        description: substep.html_instructions,
-                        startLocation: substep.start_location,
-                        maneuver: substep.maneuver
-                    };
-                    direction.substeps.push(detailedSteps);
-                }, this)
-            } else {
-                transitDetails = {
-                    arrivalStop: step.transit_details.arrival_stop,
-                    arrivalTime: step.transit_details.arrival_time,
-                    departureTime: step.transit_details.departure_time,
-                    departureStop: step.transit_details.departure_stop,
-                    headsign: step.transit_details.headsign,
-                    line: step.transit_details.line,
-                    numStops: step.transit_details.num_stops
-                };
-                direction["transitDetails"] = transitDetails;
-            }
-            routeSteps.push(direction);
-        }, this);
-    }, this);
+    routeInfo = processGoogleData(legs);
     this.state = {
-      dataSource: ds.cloneWithRows(routePreview),
+      dataSource: ds.cloneWithRows(routeInfo.routePreview),
       destinationName: props.destinationName,
       destinationArrivalTime: legs[0].arrival_time,
       destinationDepartureTime: legs[0].departure_time,
       destinationDistance: legs[0].distance,
       destinationDuration: legs[0].duration,
       destinationAddress: legs[0].end_address,
-      routeSteps: routeSteps
+      routeSteps: routeInfo.routeSteps
     };
   }
 
@@ -117,6 +77,51 @@ class DirectionScreen extends Component {
             </View>
         );
     }
+}
+
+function processGoogleData(legs) {
+    routeSteps = [];
+    routePreview = [];
+    legs.forEach(function(element) {
+        element.steps.forEach(function(step) {
+            routePreview.push(step.html_instructions);
+            direction = {
+                distance: step.distance, 
+                duration: step.duration,
+                endLocation: step.end_location,
+                startLocation: step.start_location,
+                description: step.html_instructions,
+                type: step.travel_mode,
+                substeps: [],
+            };
+            if (direction.type === "WALKING") {
+                step.steps.forEach(function(substep) {
+                    detailedSteps = {
+                        distance: substep.distance,
+                        duration: substep.duration,
+                        endLocation: substep.end_location,
+                        description: substep.html_instructions,
+                        startLocation: substep.start_location,
+                        maneuver: substep.maneuver
+                    };
+                    direction.substeps.push(detailedSteps);
+                }, this)
+            } else {
+                transitDetails = {
+                    arrivalStop: step.transit_details.arrival_stop,
+                    arrivalTime: step.transit_details.arrival_time,
+                    departureTime: step.transit_details.departure_time,
+                    departureStop: step.transit_details.departure_stop,
+                    headsign: step.transit_details.headsign,
+                    line: step.transit_details.line,
+                    numStops: step.transit_details.num_stops
+                };
+                direction["transitDetails"] = transitDetails;
+            }
+            routeSteps.push(direction);
+        }, this);
+    }, this);
+    return {routeSteps: routeSteps, routePreview: routePreview};
 }
 
 // border not working for seperator, will have to look into it later
