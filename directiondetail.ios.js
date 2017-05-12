@@ -60,7 +60,7 @@ class DirectionDetailScreen extends Component {
   componentDidMount() {
     // listen for change and store into state variable
     // if changed, add into key value data pair of all in range
-    this.beaconsDidRage = DeviceEventEmitter.addListener(
+    this.beaconsDidRange = DeviceEventEmitter.addListener(
         'beaconsDidRange', (data) => {
             this.setState(
                 {beacon_dataSource: this.state.beacon_dataSource.cloneWithRows(data.beacons)}
@@ -71,6 +71,7 @@ class DirectionDetailScreen extends Component {
     var distance = this.state.beacon_dataSource.accuracy;
     console.log("distance = " + distance);
     if (distance > 0.0 && distance < 1.5) {
+          console.log("distance = " + distance);
         this.setState({arrived: true});
     }
 
@@ -92,7 +93,7 @@ class DirectionDetailScreen extends Component {
   render() {
     const {bluetoothState, beacon_dataSource, arrived} = this.state;
 
-    if (arrived) {
+    /*if (arrived) {
       return (
         <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>
             <TouchableHighlight onPress={() => this._onPress()}>
@@ -112,7 +113,7 @@ class DirectionDetailScreen extends Component {
           </TouchableHighlight>
         </View>
       );
-    } else {
+    } else {*/
       return (
       <View style={styles.container} accessible={true}
       accessibilityLabel={'Your stop is in' + (beacon_dataSource.accuracy? beacon_dataSource.accuracy.toFixed(0) : 'not found')}>
@@ -128,7 +129,7 @@ class DirectionDetailScreen extends Component {
           />
         </View>
       );
-    }
+   // }
 }
 
   // Renders the row listing in the display of user
