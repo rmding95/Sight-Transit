@@ -14,6 +14,11 @@ class BusArrivalScreen extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+        currentDirection: props.currentDirection,
+        routeDetails: props.routeDetails,
+        transitDetails: props.transitDetails
+    };
   }
   /*static propTypes = {
     title: PropTypes.string.isRequired,
@@ -35,7 +40,8 @@ class BusArrivalScreen extends Component {
     console.log("press");
     this.props.navigator.push({
       title: "On Board",
-      component: OnBoardScreen
+      component: OnBoardScreen,
+      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}
     });
   }
 
@@ -48,7 +54,7 @@ class BusArrivalScreen extends Component {
                 Arriving . . .
             </Text>
             <Text style={styles.distance}>
-              71
+              {this.state.transitDetails.line.short_name}
             </Text>
             <Text style={styles.measure}>
               BUS

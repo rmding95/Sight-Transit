@@ -9,17 +9,36 @@ import {
   NavigatorIOS
 } from 'react-native';
 
-var DirectionScreen = require('./direction.ios.js');
+var StopCountdownScreen = require('./stopcountdown.ios.js');
 
 class OnBoardScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        currentDirection: props.currentDirection,
+        routeDetails: props.routeDetails,
+        transitDetails: props.transitDetails
+    };
+  }
+
+  _onPress = () => {
+    this.props.navigator.push({
+      title: "Stops Left",
+      component: StopCountdownScreen,
+      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops}
+    });
+  }
 
     render() {
         return (
           <View style={styles.container} accessible={true} accessibilityLabel={'Home'}>
             <Text style={{fontSize: 20,fontWeight: 'bold',fontFamily: 'APHont', margin: 100}}>Are you on board?</Text>
+            <TouchableHighlight onPress={() => this._onPress()}>
               <View style={styles.box1}>
                 <Image style={styles.image} source={require('./img/002-sound.png')} />
               </View>
+            </TouchableHighlight>
           </View>
 
         );
