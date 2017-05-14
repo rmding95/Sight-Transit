@@ -29,7 +29,9 @@ class DirectionDetailScreen extends Component {
         identifier: "bus_stop_beacon",
         uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961",
         beacon_dataSource: ds.cloneWithRows([]),
-        arrived: 'false',
+        arrived: false,
+        dsCache: [],
+        weightedDistance: 0,
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails
     }
@@ -59,6 +61,58 @@ class DirectionDetailScreen extends Component {
       Beacons.startRangingBeaconsInRegion(region);
   }
 
+  // weighted average of the most recent 10 accuracy distance
+  // in order to get at least a better estimate of location
+  // returns the computed avg in feet, otherwise undefined if it cannot
+  calculateAverage(distance) {
+    var cache = this.state.dsCache;
+    var cap = 7;
+    if (distance != undefined && distance > 0) {
+      cache.push(distance);
+    }
+
+    if (cache.length >= cap) {
+      var newCache = new Array(cap);
+      for (var i = 0; i < cap; i++) {
+        newCache[i] = cache[i + 1];
+      }
+      this.setState({dsCache: newCache});
+    } else {
+      cap = cache.length;
+    }
+    var total = 0;
+    var ds;
+    cache = this.state.dsCache;
+    for (ds in cache) {
+      if (cache[ds] != undefined) {
+        total += cache[ds];
+      } else {
+        cap--;
+      }
+    }
+    // * 3.28084 gives approx foot conversion
+    return (total / cap) * 3.28084;
+  }
+
+  // determine whether or not the user has arrived at the bus stop
+  // returning true if so, and false if not
+  calculateArrival(data) {
+    // console.log(data);
+    if (data != undefined && data[0] != undefined) {
+      var distance = data[0].accuracy;
+      var avgResult = this.calculateAverage(distance);
+
+      this.setState({weightedDistance: avgResult});
+      console.log("state's distance = " + this.state.weightedDistance);
+      console.log(this.state.dsCache);
+      if (avgResult > 0 && avgResult < 3.5) {
+          return true;
+      }
+    }
+    // default to returning undefined which is no
+    // different than false in this context
+  }
+
   // listen for change in beacon detection and
   // determine wheter bluetooth is available
   componentDidMount() {
@@ -67,17 +121,11 @@ class DirectionDetailScreen extends Component {
     this.beaconsDidRange = DeviceEventEmitter.addListener(
         'beaconsDidRange', (data) => {
             this.setState(
-                {beacon_dataSource: this.state.beacon_dataSource.cloneWithRows(data.beacons)}
+                {beacon_dataSource: this.state.beacon_dataSource.cloneWithRows(data.beacons),
+                 arrived: this.calculateArrival(data.beacons)}
             );
         }
     );
-
-    var distance = this.state.beacon_dataSource.accuracy;
-    console.log("distance = " + distance);
-    if (distance > 0.0 && distance < 1.5) {
-          console.log("distance = " + distance);
-        this.setState({arrived: true});
-    }
 
     // listen to bluetooth change state
     // and on change set state to the one found
@@ -97,7 +145,7 @@ class DirectionDetailScreen extends Component {
   render() {
     const {bluetoothState, beacon_dataSource, arrived} = this.state;
 
-    /*if (arrived) {
+    if (arrived) {
       return (
         <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>
             <TouchableHighlight onPress={() => this._onPress()}>
@@ -106,10 +154,7 @@ class DirectionDetailScreen extends Component {
                 You have {"\n"}
                 arrived at
               </Text>
-              <Text style={styles.distance}>
-
-              </Text>
-              <Text>Distance = {beacon_dataSource.accuracy}</Text>
+              <Text style={styles.distance}></Text>
               <Text style={styles.measure}>
                 YOUR STOP
               </Text>
@@ -117,15 +162,10 @@ class DirectionDetailScreen extends Component {
           </TouchableHighlight>
         </View>
       );
-    } else {*/
+    } else {
       return (
       <View style={styles.container} accessible={true}
       accessibilityLabel={'Your stop is in' + (beacon_dataSource.accuracy? beacon_dataSource.accuracy.toFixed(0) : 'not found')}>
-        {/*<TouchableHighlight onPress={() => this._onPress()}>
-        </TouchableHighlight>*/}
-          <Text>
-              Bluetooth connection status: {bluetoothState ? bluetoothState : 'N/A'}
-          </Text>
           <ListView
               dataSource={beacon_dataSource}
               enableEmptySections={true}
@@ -133,7 +173,7 @@ class DirectionDetailScreen extends Component {
           />
         </View>
       );
-   // }
+   }
 }
 
   // Renders the row listing in the display of user
@@ -149,6 +189,8 @@ class DirectionDetailScreen extends Component {
       // if (range == 'immediate' || range == 'near') {
       //     range = 'Approaching bus stop in: ';
       // }
+
+      // currently showing meters, TODO: convert to feet
       return (
           <View>
               <Text style={styles.title}>
@@ -156,7 +198,7 @@ class DirectionDetailScreen extends Component {
                   is in
               </Text>
               <Text style={styles.distance}>
-                  {rowData.accuracy ? rowData.accuracy.toFixed(0) : 'not found'}
+                  {this.state.weightedDistance.toFixed(0)}
               </Text>
               <Text style={styles.measure}>
                   FEET
