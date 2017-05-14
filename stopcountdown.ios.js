@@ -9,9 +9,6 @@ import {
   NavigatorIOS
 } from 'react-native';
 
-var WalkingDirectionScreen = require('./walkingdirection.ios.js');
-var BusInformationScreen = require('./bus.ios.js');
-
 // once direction is figured out make the screen updated automatically on user location
 class StopCountdownScreen extends Component {
 
@@ -39,19 +36,22 @@ class StopCountdownScreen extends Component {
             // });
             this.state.numStops = this.setState({numStops: this.state.numStops - 1});
         } else {
+
             this.state.routeDetails.shift();
             var nextDirection = this.state.routeDetails[0];
             if (nextDirection.type == "WALKING") {
+                var WalkingDirectionScreen = require('./walkingdirection.ios.js');
                 this.props.navigator.push({
                     title: "Walking",
                     component: WalkingDirectionScreen,
                     passProps: {routeSteps: this.state.routeDetails}
                 });
             } else {
+                var BusInformationScreen = require('./bus.ios.js');
                 this.props.navigator.push({
                     title: "Bus",
                     component: BusInformationScreen,
-                    passProps: {currentDirection: nextDirection, routeSteps: this.state.routeDetails}
+                    passProps: {currentDirection: nextDirection, routeDetails: this.state.routeDetails}
                 });
             }
         }

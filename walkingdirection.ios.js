@@ -6,9 +6,8 @@ import {
   View,
   Button,
   ListView,
+  NavigatorIOS
 } from 'react-native';
-
-var DirectionDetailScreen = require('./directiondetail.ios.js');
 
 // Add direction monitoring of the user's progress
 class WalkingDirectionScreen extends Component {
@@ -29,11 +28,20 @@ class WalkingDirectionScreen extends Component {
     }
 
     _onPress = () => {
-        this.props.navigator.push({
-            title: "Distance From Stop",
-            component: DirectionDetailScreen,
-            passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails}
-        })
+        if (this.state.routeDetails.length == 1) {
+            var HomeScreen = require('./home.ios.js');
+            this.props.navigator.push({
+                title: "Home",
+                component: HomeScreen
+            });
+        } else {
+            var DirectionDetailScreen = require('./directiondetail.ios.js');
+            this.props.navigator.push({
+                title: "Distance From Stop",
+                component: DirectionDetailScreen,
+                passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails}
+            });
+        }
     }
 
     render() {
