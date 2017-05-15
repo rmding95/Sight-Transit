@@ -7,8 +7,10 @@ import {
   Button,
   ListView,
   NavigatorIOS,
-  TouchableHighlight
+  TouchableHighlight,
+  Vibration
 } from 'react-native';
+var striptags = require('striptags');
 
 // Add direction monitoring of the user's progress
 class WalkingDirectionScreen extends Component {
@@ -18,12 +20,15 @@ class WalkingDirectionScreen extends Component {
         var leg = props.routeSteps[0];
         var steps = [];
         leg.substeps.forEach(function(element) {
-            steps.push(element.description);
+            steps.push(striptags(element.description));
         }, this);
         this.state = {
             currentDirection: props.routeSteps[0],
             routeDetails: props.routeSteps,
-            steps: steps
+            steps: steps,
+            watchID: null,
+            initialPosition: null,
+            lastPosition: null
         };
     }
 
@@ -48,9 +53,31 @@ class WalkingDirectionScreen extends Component {
         if (this.state.steps.length == 1) {
             this._onPress();
         } else {
+            Vibration.vibrate();
             this.state.steps.shift();
             this.setState({steps: this.state.steps});
         }
+    }
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                var initialPosition = JSON.stringify(position);
+                this.setState({initialPosition});
+            },
+            (error) => alert(JSON.stringify(error)),
+            {enableHighAccuracy: true}
+        );
+        this.state.watchID = navigator.geolocation.watchPosition((position) => {
+            var lastPosition = JSON.stringify(position);
+            this.setState({lastPosition});
+        }, (error) => {
+
+        }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
+    }
+
+    componentWillUnmount() {
+        navigator.geolocation.clearWatch(this.state.watchID);
     }
 
     render() {
@@ -61,6 +88,7 @@ class WalkingDirectionScreen extends Component {
                         <Text>{this.state.steps[0]}</Text>
                     </View>
                 </TouchableHighlight>                
+                <Text>{this.state.lastPosition}</Text>
                 <Button
                     onPress={() => this._onPress()}
                     title="Continue"

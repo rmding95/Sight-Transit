@@ -579,10 +579,6 @@ class DestinationScreen extends Component {
        if (this.state.talking) {
            this.state.talking = false;
            SpeechToText.finishRecognition();
-           // confirm destination with user 
-
-           // send request to google place api
-
        } else {
            this.state.talking = true;
            SpeechToText.startRecognition("en-US");
@@ -605,7 +601,6 @@ class DestinationScreen extends Component {
 
         var self = this;
 
-        // the 'this' is not correctly referring to the class 'this'
         this.subscription = NativeAppEventEmitter.addListener(
             'SpeechToText',
             (result) => {
