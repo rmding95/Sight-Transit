@@ -31,7 +31,7 @@ class DirectionDetailScreen extends Component {
         beacon_dataSource: ds.cloneWithRows([]),
         arrived: false,
         dsCache: [],
-        weightedDistance: 0,
+        weightedDistance: -1,
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails
     }
@@ -144,8 +144,8 @@ class DirectionDetailScreen extends Component {
 
   render() {
     const {bluetoothState, beacon_dataSource, arrived} = this.state;
-
-    if (arrived) {
+    console.log(beacon_dataSource.getRowCount);
+    if (arrived || beacon_dataSource.getRowCount() == 0) {
       return (
         <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>
             <TouchableHighlight onPress={() => this._onPress()}>
@@ -164,8 +164,8 @@ class DirectionDetailScreen extends Component {
       );
     } else {
       return (
-      <View style={styles.container} accessible={true}
-      accessibilityLabel={'Your stop is in' + (beacon_dataSource.accuracy? beacon_dataSource.accuracy.toFixed(0) : 'not found')}>
+        <View style={styles.container} accessible={true}
+        accessibilityLabel={'Your stop is in' + (beacon_dataSource.accuracy? beacon_dataSource.accuracy.toFixed(0) : 'not found')}>
           <ListView
               dataSource={beacon_dataSource}
               enableEmptySections={true}
@@ -181,16 +181,6 @@ class DirectionDetailScreen extends Component {
   // TODO: we might need to handle going in the wrong direction...
   // but let's assume the users do the right thing FIRST.
   renderRow = rowData => {
-      var range = rowData.proximity ? rowData.proximity : 'N/A';
-      // by definition:
-      // immediate < 0.3m
-      // near < 5.0m
-      // far > 5.0m
-      // if (range == 'immediate' || range == 'near') {
-      //     range = 'Approaching bus stop in: ';
-      // }
-
-      // currently showing meters, TODO: convert to feet
       return (
           <View>
               <Text style={styles.title}>
@@ -198,7 +188,7 @@ class DirectionDetailScreen extends Component {
                   is in
               </Text>
               <Text style={styles.distance}>
-                  {this.state.weightedDistance.toFixed(0)}
+                  {this.state.weightedDistance != -1 ? this.state.weightedDistance.toFixed(0) : 'N/A'}
               </Text>
               <Text style={styles.measure}>
                   FEET
