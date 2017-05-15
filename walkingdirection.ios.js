@@ -6,7 +6,8 @@ import {
   View,
   Button,
   ListView,
-  NavigatorIOS
+  NavigatorIOS,
+  TouchableHighlight
 } from 'react-native';
 
 // Add direction monitoring of the user's progress
@@ -14,7 +15,6 @@ class WalkingDirectionScreen extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         var leg = props.routeSteps[0];
         var steps = [];
         leg.substeps.forEach(function(element) {
@@ -23,7 +23,7 @@ class WalkingDirectionScreen extends Component {
         this.state = {
             currentDirection: props.routeSteps[0],
             routeDetails: props.routeSteps,
-            dataSource: ds.cloneWithRows(steps)
+            steps: steps
         };
     }
 
@@ -44,15 +44,23 @@ class WalkingDirectionScreen extends Component {
         }
     }
 
+    _directionPress = () => {
+        if (this.state.steps.length == 1) {
+            this._onPress();
+        } else {
+            this.state.steps.shift();
+            this.setState({steps: this.state.steps});
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}> 
-                <ListView
-                    style={styles.list}
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Text style={{textAlign: 'center'}}>{rowData}</Text>}
-                    renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                />
+                <TouchableHighlight onPress={() => this._directionPress()}>
+                    <View style={styles.content}>
+                        <Text>{this.state.steps[0]}</Text>
+                    </View>
+                </TouchableHighlight>                
                 <Button
                     onPress={() => this._onPress()}
                     title="Continue"
@@ -84,7 +92,9 @@ const styles = StyleSheet.create({
         margin: 40,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: 'gray'
-
+    },
+    content: {
+        marginTop: 100,
     }
 });
 
