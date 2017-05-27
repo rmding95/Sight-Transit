@@ -57,6 +57,40 @@ class StopCountdownScreen extends Component {
         }
     }
 
+    // _getCurrentLocation = () => {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             this.setState({currentPosition: position});
+
+    //             var destinationCoords = {latitude: this.state.steps[0].endLocation.lat, longitude: this.state.steps[0].endLocation.lng};
+    //             this.setState({destinationCoords});
+
+    //             var distance = geolib.getDistance(this.state.currentPosition.coords, this.state.destinationCoords, 1, 1);
+    //             this.setState({distanceFromObjective: distance});
+
+    //             // threshold for considering the user arrived at destination is 10 meters
+    //             if (distance <= 10.0) {
+    //                 this._directionPress();
+    //             }
+    //         },
+    //         (error) => {return error},
+    //         {enableHighAccuracy: true}
+    //     );
+    // }
+
+    // componentDidMount() {
+    //     this._getCurrentLocation();
+    //     this.state.watchID = navigator.geolocation.watchPosition((position) => {
+    //         this._getCurrentLocation();
+    //     }, (error) => {
+
+    //     }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
+    // }
+
+    // componentWillUnmount() {
+    //     navigator.geolocation.clearWatch(this.state.watchID);
+    // }
+
     render() {
         return (
             <View>
