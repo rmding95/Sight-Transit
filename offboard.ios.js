@@ -8,7 +8,6 @@ import {
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
-import BeaconBroadcast from 'react-native-ibeacon-simulator';
 
 var StopCountdownScreen = require('./stopcountdown.ios.js');
 
@@ -24,7 +23,6 @@ class OnBoardScreen extends Component {
   }
 
   _onPress = () => {
-    BeaconBroadcast.stopAdvertisingBeacon();
     this.props.navigator.push({
       title: "Stops Left",
       component: StopCountdownScreen,

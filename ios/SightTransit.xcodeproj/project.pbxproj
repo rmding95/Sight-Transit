@@ -47,6 +47,7 @@
 		D01C58851EA04C53007CDEF2 /* APHont-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */; };
 		D01C58861EA04C53007CDEF2 /* APHont-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587E1EA04C4B007CDEF2 /* APHont-Italic.ttf */; };
 		D01C58871EA04C53007CDEF2 /* APHont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587F1EA04C4B007CDEF2 /* APHont-Regular.ttf */; };
+		E1A01A6537C441B79E225170 /* libBeaconBroadcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC32781F4F34AC6B49C2652 /* libBeaconBroadcast.a */; };
 		D05A89D91ED3A6BD00D5B5B6 /* locations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D05A89D81ED3A6BD00D5B5B6 /* locations.gpx */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +241,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNBluetoothState;
 		};
+		652856121ED7869B00302613 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 293911EF46DB45C4830794EE /* BeaconBroadcast.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BeaconBroadcast;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -284,6 +292,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SightTransit/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SightTransit/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		293911EF46DB45C4830794EE /* BeaconBroadcast.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BeaconBroadcast.xcodeproj; path = "../node_modules/react-native-ibeacon-simulator/BeaconBroadcast.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SightTransit-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SightTransit-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SightTransit-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SightTransit-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -293,6 +302,7 @@
 		884262D027BE49A8B22D6456 /* RNiBeacon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNiBeacon.xcodeproj; path = "../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon.xcodeproj"; sourceTree = "<group>"; };
 		9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
 		AC7B81483F4942E4B88CEAFC /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
+		ADC32781F4F34AC6B49C2652 /* libBeaconBroadcast.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBeaconBroadcast.a; sourceTree = "<group>"; };
 		BD9854BBBD434C37A5B0EF86 /* libRNiBeacon.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNiBeacon.a; sourceTree = "<group>"; };
 		D01C587C1EA04C4B007CDEF2 /* APHont-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-Bold.ttf"; path = "../fonts/APHont/APHont-Bold.ttf"; sourceTree = "<group>"; };
 		D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-BoldItalic.ttf"; path = "../fonts/APHont/APHont-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -328,6 +338,7 @@
 				07120B9A23B14752AE3F8B5C /* libRNSpeechToTextIos.a in Frameworks */,
 				273C933BB4B94559ACEBB8FF /* libRNiBeacon.a in Frameworks */,
 				2569FE60429F44B29CF2D7F6 /* libRNBluetoothState.a in Frameworks */,
+				E1A01A6537C441B79E225170 /* libBeaconBroadcast.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +498,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6528560F1ED7869B00302613 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652856131ED7869B00302613 /* libBeaconBroadcast.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +532,7 @@
 				9BDB4BE904B84105BE15192B /* RNSpeechToTextIos.xcodeproj */,
 				884262D027BE49A8B22D6456 /* RNiBeacon.xcodeproj */,
 				85473676945C476C8F9057C9 /* RNBluetoothState.xcodeproj */,
+				293911EF46DB45C4830794EE /* BeaconBroadcast.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -648,11 +668,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 7E696B48B6;
+						DevelopmentTeam = JFTE5E726J;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 7E696B48B6;
+						DevelopmentTeam = JFTE5E726J;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -677,6 +697,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 6528560F1ED7869B00302613 /* Products */;
+					ProjectRef = 293911EF46DB45C4830794EE /* BeaconBroadcast.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -920,6 +944,13 @@
 			remoteRef = 6526B8FB1EB540D000A9CF1D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		652856131ED7869B00302613 /* libBeaconBroadcast.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBeaconBroadcast.a;
+			remoteRef = 652856121ED7869B00302613 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1084,7 +1115,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7E696B48B6;
+				DEVELOPMENT_TEAM = JFTE5E726J;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1094,12 +1125,14 @@
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = SightTransitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1117,18 +1150,20 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 7E696B48B6;
+				DEVELOPMENT_TEAM = JFTE5E726J;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = SightTransitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1147,12 +1182,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 7E696B48B6;
+				DEVELOPMENT_TEAM = JFTE5E726J;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = SightTransit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1173,12 +1209,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7E696B48B6;
+				DEVELOPMENT_TEAM = JFTE5E726J;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = SightTransit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1211,11 +1248,13 @@
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = "SightTransit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1247,11 +1286,13 @@
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-beacons-manager/ios/RNiBeacon/RNiBeacon",
 					"$(SRCROOT)/../node_modules/react-native-bluetooth-state/**",
+					"$(SRCROOT)/../node_modules/react-native-ibeacon-simulator",
 				);
 				INFOPLIST_FILE = "SightTransit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1282,6 +1323,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SightTransit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1306,6 +1348,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SightTransit-tvOSTests";
