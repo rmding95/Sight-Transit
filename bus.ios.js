@@ -14,6 +14,9 @@ class BusInformationScreen extends Component {
   constructor(props) {
     super(props);
     var transitDetails = props.currentDirection.transitDetails;
+
+
+
     this.state = {
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails,
@@ -22,7 +25,6 @@ class BusInformationScreen extends Component {
   }
 
     _onPress = () => {
-        console.log("pressed on continue button");
         this.props.navigator.push({
             title: "BusArrival",
             component: BusArrivalScreen,

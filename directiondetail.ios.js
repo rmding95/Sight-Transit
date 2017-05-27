@@ -39,7 +39,6 @@ class DirectionDetailScreen extends Component {
 
   _onPress = () => {
     this.state.routeDetails.shift();
-    console.log("press");
     this.props.navigator.push({
       title: "Bus Information",
       component: BusInformationScreen,
@@ -103,8 +102,6 @@ class DirectionDetailScreen extends Component {
       var avgResult = this.calculateAverage(distance);
 
       this.setState({weightedDistance: avgResult});
-      console.log("state's distance = " + this.state.weightedDistance);
-      console.log(this.state.dsCache);
       if (avgResult > 0 && avgResult < 3.5) {
           return true;
       }
@@ -144,7 +141,6 @@ class DirectionDetailScreen extends Component {
 
   render() {
     const {bluetoothState, beacon_dataSource, arrived} = this.state;
-    console.log(beacon_dataSource.getRowCount);
     if (arrived || beacon_dataSource.getRowCount() == 0) {
       return (
         <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>

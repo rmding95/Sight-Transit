@@ -9,32 +9,15 @@ import {
   NavigatorIOS
 } from 'react-native';
 var PlacesScreen = require('./places.ios.js');
-// var TripEntryScreen = require('./tripentry.ios.js');
-var DestinationScreen = require('./destination.ios.js');
+var NewTripScreen = require('./newtrip.ios.js');
 
 class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
   }
-  /*static propTypes = {
-    title: PropTypes.string.isRequired,
-    navigator: PropTypes.object.isRequired,
-  }*/
-
-  /*constructor(props, context) {
-    super(props, context);
-    this._onForward = this._onForward.bind(this);
-  }
-
-  _onForward() {
-    this.props.navigator.push({
-      title: 'Scene ' + nextIndex,
-    });
-  }*/
 
   _onPress = () => {
-    console.log("press");
     this.props.navigator.push({
       title: "Place",
       component: PlacesScreen
@@ -42,10 +25,9 @@ class HomeScreen extends React.Component {
   }
 
   _onPress1 = () => {
-    console.log("pressed on destination button");
     this.props.navigator.push({
       title: "Destination",
-      component: DestinationScreen
+      component: NewTripScreen
     });
   }
 

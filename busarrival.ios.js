@@ -20,24 +20,8 @@ class BusArrivalScreen extends Component {
         transitDetails: props.transitDetails
     };
   }
-  /*static propTypes = {
-    title: PropTypes.string.isRequired,
-    navigator: PropTypes.object.isRequired,
-  }*/
-
-  /*constructor(props, context) {
-    super(props, context);
-    this._onForward = this._onForward.bind(this);
-  }
-
-  _onForward() {
-    this.props.navigator.push({
-      title: 'Scene ' + nextIndex,
-    });
-  }*/
 
   _onPress = () => {
-    console.log("press");
     this.props.navigator.push({
       title: "On Board",
       component: OnBoardScreen,
