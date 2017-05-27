@@ -7,8 +7,15 @@ import {
   Button,
   ListView
 } from 'react-native';
+import BeaconBroadcast from 'react-native-ibeacon-simulator';
+
 var BusArrivalScreen = require('./busarrival.ios.js');
 
+// TODO: i'd argue we don't need an ALERT DRIVER button
+// it should be automated in that, if the user is looking for X bus,
+// the signal should be sent within the phone itself
+// thus why I made it signal before pressing the button...
+// we need to work on this page since the OBA API has not been called yet
 class BusInformationScreen extends Component {
 
   constructor(props) {
@@ -21,8 +28,18 @@ class BusInformationScreen extends Component {
     };
   }
 
+  componentWillMount() {
+      // const uuid = "e20a39f4-73f5-4bc4-a12f-17d1ad07a961"; // this is the bus_stop's
+      const uuid = "2d3d4821-9c64-4b3d-81d6-5b3d9ba6eab1"; // this is the phone's uuid... in real world need to create a unique one per DL
+      const identifier = "user_beacon";
+      const major = 0;
+      const minor = 256;
+      BeaconBroadcast.startAdvertisingBeaconWithString(uuid, identifier, major, minor);
+  }
+
     _onPress = () => {
         console.log("pressed on continue button");
+
         this.props.navigator.push({
             title: "BusArrival",
             component: BusArrivalScreen,
