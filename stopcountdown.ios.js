@@ -93,44 +93,49 @@ class StopCountdownScreen extends Component {
 
     render() {
         return (
-            <View>
-                <TouchableHighlight onPress={() => this._onPress()}>   
-                    <View style={styles.box1}>
-                        <Text>{this.state.numStops}</Text>
-                        <Text>STOPS</Text>
-                    </View>
-                </TouchableHighlight>
-            </View>
+            <View style={styles.container} accessible={true} accessibilityLabel={'You have 7 stops left'}>
+              <TouchableHighlight onPress={() => this._onPress()}>
+                <View>
+                <Text style={styles.distance}>
+                  {this.state.numStops}
+                </Text>
+                <Text style={styles.measure}>
+                  STOPS LEFT
+                </Text>
+                </View>
+            </TouchableHighlight>
+          </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-  box1: {
-    backgroundColor: '#2a2a2a',
-    height: 200,
-    marginTop: 64,
-    justifyContent: 'center', 
-    alignItems: 'center' 
+  container: {
+    flex: 1,
+    backgroundColor: '#0023ff'
   },
-  box2: {
-    backgroundColor: '#0023ff',
-    height: 200,
-    justifyContent: 'center', 
-    alignItems: 'center' 
+    title: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#f9ec00',
+    fontFamily: 'APHont',
+    marginTop: 200,
+    marginLeft: 30
   },
-  box3: {
-    backgroundColor: '#fff',
-    height: 200,
-    justifyContent: 'center', 
-    alignItems: 'center' 
+  distance: {
+    fontSize: 150,
+    fontWeight: 'bold',
+    color: '#f9ec00',
+    fontFamily: 'APHont',
+    marginTop: 275,
+    marginLeft: 30
   },
-  image: {
-    alignItems: 'center',
-    width: 110,
-    height: 110,
-    resizeMode: 'contain',
-    marginBottom: 20
+  measure: {
+    fontSize: 60,
+    fontWeight: 'bold',
+    color: '#f9ec00',
+    fontFamily: 'APHont',
+    marginLeft: 30
   }
 });
 
