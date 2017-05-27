@@ -582,6 +582,14 @@ class DestinationScreen extends Component {
        } else {
            this.state.talking = true;
            SpeechToText.startRecognition("en-US");
+           navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    var initialPosition = JSON.stringify(position);
+                    this.setState({initialPosition});
+                },
+                (error) => alert(error.message),
+                {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+           );
        }
    }
 

@@ -11,8 +11,8 @@ import {
   Vibration
 } from 'react-native';
 var striptags = require('striptags');
+var geolib = require('geolib');
 
-// Add direction monitoring of the user's progress
 class WalkingDirectionScreen extends Component {
 
     constructor(props) {
@@ -20,15 +20,17 @@ class WalkingDirectionScreen extends Component {
         var leg = props.routeSteps[0];
         var steps = [];
         leg.substeps.forEach(function(element) {
-            steps.push(striptags(element.description));
+            steps.push({description: striptags(element.description), endLocation: element.endLocation});
         }, this);
         this.state = {
             currentDirection: props.routeSteps[0],
             routeDetails: props.routeSteps,
             steps: steps,
             watchID: null,
-            initialPosition: null,
-            lastPosition: null
+            currentPosition: 0,
+            lastPosition: 0,
+            distanceFromObjective: 0,
+            destinationCoords: 0
         };
     }
 
@@ -49,6 +51,7 @@ class WalkingDirectionScreen extends Component {
         }
     }
 
+    // on press got called 3 times???
     _directionPress = () => {
         if (this.state.steps.length == 1) {
             this._onPress();
@@ -59,18 +62,31 @@ class WalkingDirectionScreen extends Component {
         }
     }
 
-    componentDidMount() {
+    _getCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                var initialPosition = JSON.stringify(position);
-                this.setState({initialPosition});
+                this.setState({currentPosition: position});
+
+                var destinationCoords = {latitude: this.state.steps[0].endLocation.lat, longitude: this.state.steps[0].endLocation.lng};
+                this.setState({destinationCoords});
+
+                var distance = geolib.getDistance(this.state.currentPosition.coords, this.state.destinationCoords, 1, 1);
+                this.setState({distanceFromObjective: distance});
+
+                // threshold for considering the user arrived at destination is 10 meters
+                if (distance <= 10.0) {
+                    this._directionPress();
+                }
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => {return error},
             {enableHighAccuracy: true}
         );
+    }
+
+    componentDidMount() {
+        this._getCurrentLocation();
         this.state.watchID = navigator.geolocation.watchPosition((position) => {
-            var lastPosition = JSON.stringify(position);
-            this.setState({lastPosition});
+            this._getCurrentLocation();
         }, (error) => {
 
         }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
@@ -85,10 +101,12 @@ class WalkingDirectionScreen extends Component {
             <View style={styles.container}> 
                 <TouchableHighlight onPress={() => this._directionPress()}>
                     <View style={styles.content}>
-                        <Text>{this.state.steps[0]}</Text>
+                        <Text>{this.state.steps[0].description}</Text>
                     </View>
                 </TouchableHighlight>                
-                <Text>{this.state.lastPosition}</Text>
+                <Text>You are at {this.state.currentPosition ? this.state.currentPosition.coords.latitude : null}, {this.state.currentPosition ? this.state.currentPosition.coords.longitude : null}</Text>
+                <Text>and going to {this.state.destinationCoords.latitude}, {this.state.destinationCoords.longitude}</Text>
+                <Text>You are {this.state.distanceFromObjective} meters away</Text>
                 <Button
                     onPress={() => this._onPress()}
                     title="Continue"

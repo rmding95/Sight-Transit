@@ -48,6 +48,7 @@
 		D01C58861EA04C53007CDEF2 /* APHont-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587E1EA04C4B007CDEF2 /* APHont-Italic.ttf */; };
 		D01C58871EA04C53007CDEF2 /* APHont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587F1EA04C4B007CDEF2 /* APHont-Regular.ttf */; };
 		E1A01A6537C441B79E225170 /* libBeaconBroadcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC32781F4F34AC6B49C2652 /* libBeaconBroadcast.a */; };
+		D05A89D91ED3A6BD00D5B5B6 /* locations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D05A89D81ED3A6BD00D5B5B6 /* locations.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +308,7 @@
 		D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-BoldItalic.ttf"; path = "../fonts/APHont/APHont-BoldItalic.ttf"; sourceTree = "<group>"; };
 		D01C587E1EA04C4B007CDEF2 /* APHont-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-Italic.ttf"; path = "../fonts/APHont/APHont-Italic.ttf"; sourceTree = "<group>"; };
 		D01C587F1EA04C4B007CDEF2 /* APHont-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "APHont-Regular.ttf"; path = "../fonts/APHont/APHont-Regular.ttf"; sourceTree = "<group>"; };
+		D05A89D81ED3A6BD00D5B5B6 /* locations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = locations.gpx; path = ../locations.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,6 +549,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D05A89D81ED3A6BD00D5B5B6 /* locations.gpx */,
 				D01C587C1EA04C4B007CDEF2 /* APHont-Bold.ttf */,
 				D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */,
 				D01C587E1EA04C4B007CDEF2 /* APHont-Italic.ttf */,
@@ -993,6 +996,7 @@
 				D01C58831EA04C4B007CDEF2 /* APHont-Regular.ttf in Resources */,
 				D01C58801EA04C4B007CDEF2 /* APHont-Bold.ttf in Resources */,
 				D01C58811EA04C4B007CDEF2 /* APHont-BoldItalic.ttf in Resources */,
+				D05A89D91ED3A6BD00D5B5B6 /* locations.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
