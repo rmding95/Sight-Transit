@@ -11,7 +11,7 @@ import {
 
 var StopCountdownScreen = require('./stopcountdown.ios.js');
 
-class OnBoardScreen extends Component {
+class OffBoardScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -32,10 +32,10 @@ class OnBoardScreen extends Component {
 
 render() {
         return (
-          <View style={styles.container} accessible={true} accessibilityLabel={'Are You On Board'}>
-            <TouchableHighlight onPress={() => this._onPress('Are You On Board')}>
+          <View style={styles.container} accessible={true} accessibilityLabel={'Did You Get Off'}>
+            <TouchableHighlight onPress={() => this._onPress('Did You Get Off')}>
               <View style={styles.box1}>
-                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>Are You On Board</Text>
+                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>Did You Get Off</Text>
               </View>
             </TouchableHighlight>
 
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
 
 
 
-module.exports = OnBoardScreen;
+module.exports = OffBoardScreen;

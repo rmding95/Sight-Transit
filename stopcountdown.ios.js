@@ -93,7 +93,7 @@ class StopCountdownScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'You have 7 stops left'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'You have ' + this.state.numStops + ' stops left'}>
               <TouchableHighlight onPress={() => this._onPress()}>
                 <View>
                 <Text style={styles.distance}>

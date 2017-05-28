@@ -84,29 +84,29 @@ class WalkingDirectionScreen extends Component {
     }
 
     componentDidMount() {
-        //this._getCurrentLocation();
+        this._getCurrentLocation();
         this.state.watchID = navigator.geolocation.watchPosition((position) => {
             this._getCurrentLocation();
         }, (error) => {
 
-        }, {enableHighAccuracy: true, distanceFilter: 5, timeout: 0});
+        }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
     }
 
     componentWillUnmount() {
         navigator.geolocation.clearWatch(this.state.watchID);
     }
 
+
+
     render() {
         return (
             <View style={styles.container}> 
                 <TouchableHighlight onPress={() => this._directionPress()}>
-                    <View style={styles.content}>
+                    <View style={styles.content} accessible ={true} accessibilityLabel={this.state.steps[0].description}>
                         <Text>{this.state.steps[0].description}</Text>
                     </View>
                 </TouchableHighlight>                
-                <Text>You are at {this.state.currentPosition ? this.state.currentPosition.coords.latitude : null}, {this.state.currentPosition ? this.state.currentPosition.coords.longitude : null}</Text>
-                <Text>and going to {this.state.destinationCoords.latitude}, {this.state.destinationCoords.longitude}</Text>
-                <Text>You are {this.state.distanceFromObjective} meters away</Text>
+        
                 <Button
                     onPress={() => this._onPress()}
                     title="Continue"

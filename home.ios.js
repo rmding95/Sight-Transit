@@ -46,7 +46,7 @@ class HomeScreen extends React.Component {
           </View>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => this._onPress1()}>
-          <View style={styles.bot} accessible={true} accessibilityLabel={'New Trip'}>
+          <View style={styles.bot} accessible={true} accessibilityLabel={'New trip'}>
             <View>
             <Image style={styles.image} source={require('./img/placeholder.png')} />
             <Text style={{fontSize: 30,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>

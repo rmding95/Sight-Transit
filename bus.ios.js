@@ -50,7 +50,7 @@ class BusInformationScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Bus'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + 'this.state.transitDetails.arrivalTime.text'}>
                 <View style={styles.halfHeight}>
                     <Text>Your next bus {this.state.transitDetails.line.short_name}</Text>
                     <Text>Arrives at {this.state.transitDetails.arrivalTime.text} </Text>
@@ -59,7 +59,7 @@ class BusInformationScreen extends Component {
                 <Button
                     onPress={() => this._onPress()}
                     title="Alert Drivers"
-                    accessibilityLabel="Alert Drivers"
+                    accessibilityLabel="Alert Driver"
                 />
             </View>
         );

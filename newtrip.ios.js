@@ -260,7 +260,7 @@ class NewTripScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Destination'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'Where are you going'}>
                 <View>
                     <Text style={styles.header}>Where are you headed? </Text>
                 </View>
