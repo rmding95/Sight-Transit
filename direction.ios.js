@@ -56,19 +56,15 @@ class DirectionScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Direction'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'Directions to ' + this.state.destinationName 
+            + '. It is ' + this.state.destinationDistance.text + ' away and will take ' + this.state.destinationDuration}>
                 <View style={styles.halfHeight}>
-                    <Text style={styles.h1}>Directions to {this.state.destinationName}</Text>
-                    <Text style={{fontFamily: 'APHont'}}>{this.state.destinationAddress} </Text>
-                    <Text style={{fontFamily: 'APHont'}}>Distance: {this.state.destinationDistance.text}, Duration: {this.state.destinationDuration.text}</Text>
-                    <Text style={{fontFamily: 'APHont'}}>Leave at {this.state.destinationDepartureTime.text}, and you'll arrive at {this.state.destinationArrivalTime.text}</Text>
+                    <Text style={styles.h1}>Directions to</Text>
+                    <Text style={styles.h2}>{this.state.destinationAddress}</Text>
+                    <Text style={styles.distance}>{this.state.destinationDistance.text}</Text>
+                    <Text style={styles.duration}>{this.state.destinationDuration.text}</Text>
                 </View>
-                
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Text style ={styles.list}>{rowData}</Text>}
-                    renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                />
+
                 <Button
                     onPress={() => this._onPress()}
                     title="Continue"
@@ -131,28 +127,41 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     halfHeight: {
-        flex: 0.5,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'black',
-        marginTop: 144,
+        marginTop: 160,
         marginLeft: 30
     },
     h1: {
         fontSize: 24,
+        fontFamily: 'APHont'
+    },
+    h2: {
+        fontSize: 24,
         fontWeight: 'bold',
+        fontFamily: 'APHont',
+        marginTop: 20
+    },
+    distance: {
+        fontSize: 70,
+        fontFamily: 'APHont',
+        marginTop: 120
+    },
+    duration: {
+        fontSize: 70,
         fontFamily: 'APHont'
     },
     list: {
         marginLeft:30,
         fontFamily: 'APHont',
-        fontSize: 16
+        fontSize: 16,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderTopColor: 'black'
     },
     separator: {
         marginTop: 30,
         marginBottom: 30,
-        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderTopWidth: StyleSheet.hairlineWidth,
         borderWidth: 1,
-        borderBottomColor: '#2a2a2a',
+        borderTopColor: '#2a2a2a',
         width:414
 
     }
