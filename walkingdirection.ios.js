@@ -84,12 +84,12 @@ class WalkingDirectionScreen extends Component {
     }
 
     componentDidMount() {
-        this._getCurrentLocation();
+        //this._getCurrentLocation();
         this.state.watchID = navigator.geolocation.watchPosition((position) => {
             this._getCurrentLocation();
         }, (error) => {
 
-        }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
+        }, {enableHighAccuracy: true, distanceFilter: 5, timeout: 0});
     }
 
     componentWillUnmount() {

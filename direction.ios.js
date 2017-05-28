@@ -45,11 +45,11 @@ class DirectionScreen extends Component {
                 passProps: {routeSteps: this.state.routeSteps}
             });
         } else {
-            // THIS DOES NOT WORK 
+            var BusInformationScreen = require('./busarrival.ios.js');
             this.props.navigator.push({
                 title: "Bus",
-                component: BusDirectionScreen,
-                passProps: {routeDetails: this.state.routeSteps}
+                component: BusInformationScreen,
+                passProps: {routeDetails: this.state.routeSteps, currentDirection: this.state.routeSteps[0]}
             });
         }
     }
