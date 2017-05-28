@@ -8,11 +8,10 @@ import {
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
-import BeaconBroadcast from 'react-native-ibeacon-simulator';
 
 var StopCountdownScreen = require('./stopcountdown.ios.js');
 
-class OnBoardScreen extends Component {
+class ReverseScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -24,7 +23,6 @@ class OnBoardScreen extends Component {
   }
 
   _onPress = () => {
-    BeaconBroadcast.stopAdvertisingBeacon();
     this.props.navigator.push({
       title: "Stops Left",
       component: StopCountdownScreen,
@@ -34,10 +32,10 @@ class OnBoardScreen extends Component {
 
 render() {
         return (
-          <View style={styles.container} accessible={true} accessibilityLabel={'Are You On Board'}>
-            <TouchableHighlight onPress={() => this._onPress('Are You On Board')}>
+          <View style={styles.container} accessible={true} accessibilityLabel={'Would You Like To Go Back'}>
+            <TouchableHighlight onPress={() => this._onPress('Would You Like To Go Back')}>
               <View style={styles.box1}>
-                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>Are You On Board</Text>
+                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>Would You Like To Go Back</Text>
               </View>
             </TouchableHighlight>
 
@@ -84,4 +82,4 @@ const styles = StyleSheet.create({
 
 
 
-module.exports = OnBoardScreen;
+module.exports = ReverseScreen;

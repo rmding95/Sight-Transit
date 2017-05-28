@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 var OnBoardScreen = require('./onboard.ios.js');
 
-class BusArrivalScreen extends Component {
+class FinalArrivalScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -20,8 +20,24 @@ class BusArrivalScreen extends Component {
         transitDetails: props.transitDetails
     };
   }
+  /*static propTypes = {
+    title: PropTypes.string.isRequired,
+    navigator: PropTypes.object.isRequired,
+  }*/
+
+  /*constructor(props, context) {
+    super(props, context);
+    this._onForward = this._onForward.bind(this);
+  }
+
+  _onForward() {
+    this.props.navigator.push({
+      title: 'Scene ' + nextIndex,
+    });
+  }*/
 
   _onPress = () => {
+    console.log("press");
     this.props.navigator.push({
       title: "On Board",
       component: OnBoardScreen,
@@ -31,17 +47,14 @@ class BusArrivalScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container} accessible={true} accessibilityLabel={'Your bus is arriving'}>
+      <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at'}>
           <TouchableHighlight onPress={() => this._onPress()}>
             <View>
             <Text style={styles.title}>
-                Arriving . . .
+                Arriving At ....
             </Text>
             <Text style={styles.distance}>
-              {this.state.transitDetails.line.short_name}
-            </Text>
-            <Text style={styles.measure}>
-              BUS
+              Richard Senpai, please pass me prop
             </Text>
             </View>
         </TouchableHighlight>
@@ -57,14 +70,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontWeight: 'bold',
+    fontWeight: 'regular',
     color: '#f9ec00',
     fontFamily: 'APHont',
     marginTop: 100,
     marginLeft: 30
   },
   distance: {
-    fontSize: 150,
+    fontSize: 36,
     fontWeight: 'bold',
     color: '#f9ec00',
     fontFamily: 'APHont',
@@ -80,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = BusArrivalScreen;
+module.exports = FinalArrivalScreen;

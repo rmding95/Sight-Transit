@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 var WalkingDirectionScreen = require('./walkingdirection.ios.js');
-var BusDirectionScreen = require('./busdirection.ios.js');
 
 // this is the initial confirmation of destination
 // todo: directions are not dynamic (walk, bus, walk)
@@ -46,6 +45,7 @@ class DirectionScreen extends Component {
                 passProps: {routeSteps: this.state.routeSteps}
             });
         } else {
+            // THIS DOES NOT WORK 
             this.props.navigator.push({
                 title: "Bus",
                 component: BusDirectionScreen,

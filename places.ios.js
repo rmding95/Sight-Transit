@@ -14,7 +14,6 @@ var DirectionScreen = require('./direction.ios.js');
 class PlacesScreen extends Component {
 
   _onPress = (location) => {
-    console.log("press");
     this.props.navigator.push({
       title: "Destination",
       component: DirectionScreen,
