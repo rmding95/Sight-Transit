@@ -260,6 +260,7 @@ class NewTripScreen extends Component {
 
     render() {
         return (
+            <View>
             <View style={styles.container} accessible={true} accessibilityLabel={'Where are you going'}>
                 <View>
                     <Text style={styles.header}>Where are you headed? </Text>
@@ -270,12 +271,17 @@ class NewTripScreen extends Component {
                     </View>
                 </TouchableHighlight>
 
-                <Button
+                
+          </View>
+          <View>
+              <Button
                     onPress={() => this._onPress()}
                     title="Continue"
                     accessibilityLabel="Continue"
                 />
-          </View>
+             </View>
+            </View>
+              
         );
     }
 }
