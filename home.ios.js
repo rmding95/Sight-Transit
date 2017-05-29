@@ -37,7 +37,7 @@ class HomeScreen extends React.Component {
       <TouchableHighlight onPress={() => this._onPress()}>
           <View style={styles.top} accessible={true} accessibilityLabel={'My Places'}>
               <View>
-                <Image style={styles.image} source={require('./img/home.png')} />
+                <Image style={styles.image1} source={require('./img/home.png')} />
                 <Text style={{fontSize: 30,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>
                   MY PLACES
                 </Text>
@@ -48,7 +48,7 @@ class HomeScreen extends React.Component {
         <TouchableHighlight onPress={() => this._onPress1()}>
           <View style={styles.bot} accessible={true} accessibilityLabel={'New trip'}>
             <View>
-            <Image style={styles.image} source={require('./img/placeholder.png')} />
+            <Image style={styles.image2} source={require('./img/placeholder.png')} />
             <Text style={{fontSize: 30,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>
               NEW TRIP
             </Text>
@@ -71,7 +71,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
   },
-  image: {
+  image1: {
+    alignItems: 'center',
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+    marginBottom: 20,
+    marginLeft: 35
+  },
+  image2: {
     alignItems: 'center',
     width: 100,
     height: 100,

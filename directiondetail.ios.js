@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#f9ec00',
         fontFamily: 'APHont',
-        marginTop: 100,
+        marginTop: 120,
         marginLeft: 30
     },
     distance: {
