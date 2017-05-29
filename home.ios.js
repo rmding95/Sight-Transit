@@ -27,7 +27,9 @@ class HomeScreen extends React.Component {
   _onPress1 = () => {
     this.props.navigator.push({
       title: "Destination",
-      component: NewTripScreen
+      component: NewTripScreen,
+      // not sure why this doesn't work... documentation is poor
+      backButtonTitle: "Cancel Trip"
     });
   }
 

@@ -90,6 +90,10 @@ class StopCountdownScreen extends Component {
     //     navigator.geolocation.clearWatch(this.state.watchID);
     // }
 
+    componentWillUnmount() {
+        clearInterval(this.state.timerID);
+    }
+
     render() {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'You have ' + this.state.numStops + ' stops left'}>
