@@ -51,10 +51,10 @@ class FinalArrivalScreen extends Component {
           <TouchableHighlight onPress={() => this._onPress()}>
             <View>
             <Text style={styles.title}>
-                Arriving At ....
+                You have arrived at
             </Text>
             <Text style={styles.distance}>
-              Richard Senpai, please pass me prop
+              Richard Senpai, please pass me prop 
             </Text>
             </View>
         </TouchableHighlight>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: 'regular',
     color: '#f9ec00',
     fontFamily: 'APHont',
-    marginTop: 100,
+    marginTop: 120,
     marginLeft: 30
   },
   distance: {
@@ -83,14 +83,7 @@ const styles = StyleSheet.create({
     fontFamily: 'APHont',
     marginTop: 175,
     marginLeft: 30
-  },
-  measure: {
-    fontSize: 60,
-    fontWeight: 'bold',
-    color: '#f9ec00',
-    fontFamily: 'APHont',
-    marginLeft: 30
-  },
+  }
 });
 
 module.exports = FinalArrivalScreen;

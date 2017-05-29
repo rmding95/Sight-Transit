@@ -261,7 +261,7 @@ class NewTripScreen extends Component {
     render() {
         return (
             <View>
-            <View style={styles.container} accessible={true} accessibilityLabel={'Where are you going'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'Where are you headed?'}>
                 <View>
                     <Text style={styles.header}>Where are you headed? </Text>
                 </View>
@@ -327,14 +327,14 @@ async function callGoogleDirectionApi(origin, destination) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 70
+        marginTop: 200
     },
     header: {
         fontSize: 24,
         fontWeight: 'bold',
         fontFamily: 'APHont',
         marginLeft: 30,
-        marginTop: 90
+        color: '#2a2a2a'
     },
     square: {
         width: 300,
