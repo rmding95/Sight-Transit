@@ -47,7 +47,7 @@ class FinalArrivalScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at'}>
+      <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at' + Richard.Senpai.Please.Pass.Me.Prop}>
           <TouchableHighlight onPress={() => this._onPress()}>
             <View>
             <Text style={styles.title}>

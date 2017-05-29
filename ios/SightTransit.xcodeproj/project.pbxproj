@@ -47,8 +47,8 @@
 		D01C58851EA04C53007CDEF2 /* APHont-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587D1EA04C4B007CDEF2 /* APHont-BoldItalic.ttf */; };
 		D01C58861EA04C53007CDEF2 /* APHont-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587E1EA04C4B007CDEF2 /* APHont-Italic.ttf */; };
 		D01C58871EA04C53007CDEF2 /* APHont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D01C587F1EA04C4B007CDEF2 /* APHont-Regular.ttf */; };
-		E1A01A6537C441B79E225170 /* libBeaconBroadcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC32781F4F34AC6B49C2652 /* libBeaconBroadcast.a */; };
 		D05A89D91ED3A6BD00D5B5B6 /* locations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D05A89D81ED3A6BD00D5B5B6 /* locations.gpx */; };
+		E1A01A6537C441B79E225170 /* libBeaconBroadcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC32781F4F34AC6B49C2652 /* libBeaconBroadcast.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -668,11 +668,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = JFTE5E726J;
+						DevelopmentTeam = 7E696B48B6;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = JFTE5E726J;
+						DevelopmentTeam = 7E696B48B6;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1115,7 +1115,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = JFTE5E726J;
+				DEVELOPMENT_TEAM = 7E696B48B6;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1150,7 +1150,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = JFTE5E726J;
+				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
@@ -1182,7 +1182,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = JFTE5E726J;
+				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
@@ -1209,7 +1209,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JFTE5E726J;
+				DEVELOPMENT_TEAM = 7E696B48B6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
