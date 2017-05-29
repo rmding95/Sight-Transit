@@ -10,56 +10,57 @@ import {
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
-import Beacons                from 'react-native-beacons-manager';
-import BluetoothState         from 'react-native-bluetooth-state';
+import Beacons from 'react-native-beacons-manager';
 
 var BusInformationScreen = require('./bus.ios.js');
 
+const region = {
+    identifier: "bus_stop_beacon",
+    uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961"
+};
+
 class DirectionDetailScreen extends Component {
+    constructor(props) {
+        super(props);
 
-  constructor(props) {
-    super(props);
-
-    // constuct a listview of datas on  bluetooths in range
-    var ds = new ListView.DataSource(
-        {rowHasChanged: (r1, r2) => r1 != r2 }
-    );
-    // state of the beacon defined
-    this.state = {
-        bluetoothState: '',
-        identifier: "bus_stop_beacon",
-        uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961",
-        beacon_dataSource: ds.cloneWithRows([]),
-        arrived: false,
-        dsCache: [],
-        weightedDistance: -1,
-        currentDirection: props.currentDirection,
-        routeDetails: props.routeDetails
+        // constuct a listview of datas on  bluetooths in range
+        var ds = new ListView.DataSource(
+            {rowHasChanged: (r1, r2) => r1 != r2 }
+        );
+        // state of the beacon defined
+        this.state = {
+            identifier: "bus_stop_beacon",
+            uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961",
+            beacon_dataSource: ds.cloneWithRows([]),
+            arrived: false,
+            dsCache: [],
+            weightedDistance: -1,
+            currentDirection: props.currentDirection,
+            routeDetails: props.routeDetails
+        }
     }
-  }
 
-  _onPress = () => {
-    this.state.routeDetails.shift();
-    this.props.navigator.replace({
-      title: "Bus Information",
-      component: BusInformationScreen,
-      passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails}
-    });
-  }
+    _onPress = () => {
+        Beacons.stopRangingBeaconsInRegion(region);
+        this.props.navigator.replace({
+        title: "Bus Information",
+        component: BusInformationScreen,
+        passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails}
+        });
+    }
 
-  // initialize authorization and
-  // start range for the beacon detection
-  componentWillMount() {
-      // ask for permission to turn beacon on?
-      Beacons.requestWhenInUseAuthorization();
+    // initialize authorization and
+    // start range for the beacon detection
+    componentWillMount() {
+        this.state.routeDetails.shift();
 
-      const region = {
-          identifier: "bus_stop_beacon",
-          uuid: "e20a39f4-73f5-4bc4-a12f-17d1ad07a961"
-      };
-      // begin the range detection
-      Beacons.startRangingBeaconsInRegion(region);
-  }
+        // ask for permission to turn beacon on?
+        Beacons.requestWhenInUseAuthorization();
+
+        // begin the range detection
+        Beacons.startRangingBeaconsInRegion(region);
+    }
+
     // weighted average of the most recent 10 accuracy distance
     // in order to get at least a better estimate of location
     // returns the computed avg in feet, otherwise undefined if it cannot
@@ -104,8 +105,6 @@ class DirectionDetailScreen extends Component {
             var avgResult = this.calculateAverage(distance);
 
             this.setState({weightedDistance: avgResult});
-            console.log("state's distance = " + this.state.weightedDistance);
-            console.log(this.state.dsCache);
             if (avgResult > 0 && avgResult < 3.5) {
                 return true;
             }
@@ -127,15 +126,6 @@ class DirectionDetailScreen extends Component {
                 );
             }
         );
-
-        // listen to bluetooth change state
-        // and on change set state to the one found
-        BluetoothState.subscribe(
-            bluetoothState => {
-                this.setState({bluetoothState: bluetoothState});
-            }
-        );
-        BluetoothState.initialize();
     }
 
     // remove component
@@ -144,7 +134,7 @@ class DirectionDetailScreen extends Component {
     }
 
     render() {
-        const {bluetoothState, beacon_dataSource, arrived} = this.state;
+        const {beacon_dataSource, arrived} = this.state;
         if (arrived || beacon_dataSource.getRowCount() == 0) {
             return (
                 <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>
