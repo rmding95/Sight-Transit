@@ -42,7 +42,7 @@ class BusInformationScreen extends Component {
 
     _onPress = () => {
         this.props.navigator.replace({
-            title: "BusArrival",
+            title: "Bus Arrival",
             component: BusArrivalScreen,
             passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}
         });
@@ -50,7 +50,7 @@ class BusInformationScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + 'this.state.transitDetails.arrivalTime.text'}>
+            <View style={styles.container} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + this.state.transitDetails.arrivalTime.text}>
                 <View style={styles.halfHeight}>
                     <Text>Your next bus {this.state.transitDetails.line.short_name}</Text>
                     <Text>Arrives at {this.state.transitDetails.arrivalTime.text} </Text>
@@ -68,24 +68,46 @@ class BusInformationScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 90,
+        marginTop: 10,
         flex: 1,
     },
     halfHeight: {
-        flex: 0.5,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'black'
+        marginTop: 120,
+        marginLeft: 30
+    },
+    h1: {
+        fontSize: 24,
+        fontFamily: 'APHont'
+    },
+    h2: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontFamily: 'APHont',
+        marginTop: 20
+    },
+    distance: {
+        fontSize: 70,
+        fontFamily: 'APHont',
+        marginTop: 120
+    },
+    duration: {
+        fontSize: 70,
+        fontFamily: 'APHont'
     },
     list: {
-        flex: 1,
-        flexDirection: 'row',
-        paddingLeft: 20
+        marginLeft:30,
+        fontFamily: 'APHont',
+        fontSize: 16,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderTopColor: 'black'
     },
     separator: {
-        height: 1,
-        margin: 40,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'gray'
+        marginTop: 30,
+        marginBottom: 30,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderWidth: 1,
+        borderTopColor: '#2a2a2a',
+        width:414
 
     }
 });

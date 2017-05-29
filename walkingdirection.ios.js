@@ -106,7 +106,12 @@ class WalkingDirectionScreen extends Component {
                     <View style={styles.content} accessible ={true} accessibilityLabel={this.state.steps[0].description}>
                         <Text>{this.state.steps[0].description}</Text>
                     </View>
-                </TouchableHighlight>                
+                </TouchableHighlight> 
+
+                {/* <ListView
+                      dataSource={this.state.dataSource}
+                      renderRow={(rowData) => <Text style ={styles.list}>{rowData}</Text>} />}
+                  /> */}       
         
                 <Button
                     onPress={() => this._onPress()}
@@ -132,14 +137,9 @@ const styles = StyleSheet.create({
     list: {
         flex: 1,
         flexDirection: 'row',
-        paddingLeft: 20
+        padding: 20
     },
-    separator: {
-        height: 1,
-        margin: 40,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'gray'
-    },
+
     content: {
         marginTop: 100,
     }

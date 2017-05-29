@@ -32,22 +32,22 @@ class OffBoardScreen extends Component {
 
 render() {
         return (
-          <View style={styles.container} accessible={true} accessibilityLabel={'Did You Get Off'}>
-            <TouchableHighlight onPress={() => this._onPress('Did You Get Off')}>
+          <View style={styles.container} accessible={true} accessibilityLabel={'Are you off the bus?'}>
+            <TouchableHighlight onPress={() => this._onPress('Are you off the bus?')}>
               <View style={styles.box1}>
-                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#2a2a2a',fontFamily: 'APHont'}}>Did You Get Off</Text>
+                <Text style={{fontSize: 24,color: '#2a2a2a',fontFamily: 'APHont'}}>Are you off the bus?</Text>
               </View>
             </TouchableHighlight>
 
             <TouchableHighlight onPress={() => this._onPress('Yes')}>
               <View style={styles.box2} accessible={true} accessibilityLabel={'Yes'}>
-                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>Yes</Text>
+                <Text style={{fontSize: 60,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>YES</Text>
               </View>
             </TouchableHighlight>
 
             <TouchableHighlight onPress={() => this._onPress('No')}>
               <View style={styles.box3} accessible={true} accessibilityLabel={'No'}>
-                <Text style={{fontSize: 36,fontWeight: 'bold',color: '#f9ec00',fontFamily: 'APHont'}}>No</Text>
+                <Text style={{fontSize: 60,fontWeight: 'bold',color: '#f9ec00',fontFamily: 'APHont'}}>NO</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -67,13 +67,13 @@ const styles = StyleSheet.create({
   },
   box2: {
     backgroundColor: '#2a2a2a',
-    height: 200,
+    height: 210,
     justifyContent: 'center', 
     alignItems: 'center' 
   },
   box3: {
     backgroundColor: '#0023ff',
-    height: 200,
+    height: 210,
     justifyContent: 'center', 
     alignItems: 'center' 
   }

@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     halfHeight: {
-        marginTop: 160,
+        marginTop: 120,
         marginLeft: 30
     },
     h1: {

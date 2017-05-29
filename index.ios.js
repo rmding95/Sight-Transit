@@ -16,7 +16,7 @@ export default class SightTransit extends React.Component {
     return (
       <NavigatorIOS style={styles.container}
         initialRoute={{
-          title: 'Home',
+          title: 'Cancel Trip',
           component: HomeScreen,
           interactivePopGestureEnabled: false,
           navigationBarHidden: true,
