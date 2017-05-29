@@ -22,33 +22,41 @@ class StopCountdownScreen extends Component {
         };
     }
 
-    _onPress = () => {
-        if (this.state.numStops > 1) {
-            // this.props.navigator.push({
-            //     title: "Stops Left",
-            //     component: StopCountdownScreen,
-            //     passProps: {
-            //         currentDirection: this.state.currentDirection, 
-            //         routeDetails: this.state.routeDetails, 
-            //         transitDetails: this.state.transitDetails, 
-            //         numStops: this.state.numStops - 1
-            //     }
-            // });
-            this.state.numStops = this.setState({numStops: this.state.numStops - 1});
-        } else {
+    componentDidMount() {
+        var timerID = setInterval( () => {
+            this.setState({
+                numStops: this.state.numStops - 1
+            })
+        }, 1000)
+        this.setState({
+            timerID: timerID
+        });
+
+        // this._getCurrentLocation();
+        // this.state.watchID = navigator.geolocation.watchPosition((position) => {
+        //     this._getCurrentLocation();
+        // }, (error) => {
+
+        // }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
+    }
+
+    componentDidUpdate() {
+        if (this.state.numStops < 1) {
+            clearInterval(this.state.timerID);
 
             this.state.routeDetails.shift();
             var nextDirection = this.state.routeDetails[0];
+
             if (nextDirection.type == "WALKING") {
                 var WalkingDirectionScreen = require('./walkingdirection.ios.js');
-                this.props.navigator.push({
+                this.props.navigator.replace({
                     title: "Walking",
                     component: WalkingDirectionScreen,
                     passProps: {routeSteps: this.state.routeDetails}
                 });
             } else {
                 var BusInformationScreen = require('./bus.ios.js');
-                this.props.navigator.push({
+                this.props.navigator.replace({
                     title: "Bus",
                     component: BusInformationScreen,
                     passProps: {currentDirection: nextDirection, routeDetails: this.state.routeDetails}
@@ -78,15 +86,6 @@ class StopCountdownScreen extends Component {
     //     );
     // }
 
-    // componentDidMount() {
-    //     this._getCurrentLocation();
-    //     this.state.watchID = navigator.geolocation.watchPosition((position) => {
-    //         this._getCurrentLocation();
-    //     }, (error) => {
-
-    //     }, {enableHighAccuracy: true, distanceFilter: 3, timeout: 250});
-    // }
-
     // componentWillUnmount() {
     //     navigator.geolocation.clearWatch(this.state.watchID);
     // }
@@ -94,7 +93,6 @@ class StopCountdownScreen extends Component {
     render() {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={'You have ' + this.state.numStops + ' stops left'}>
-              <TouchableHighlight onPress={() => this._onPress()}>
                 <View>
                 <Text style={styles.distance}>
                   {this.state.numStops}
@@ -103,7 +101,6 @@ class StopCountdownScreen extends Component {
                   STOPS LEFT
                 </Text>
                 </View>
-            </TouchableHighlight>
           </View>
         );
     }

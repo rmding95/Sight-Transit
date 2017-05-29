@@ -18,6 +18,8 @@ export default class SightTransit extends React.Component {
         initialRoute={{
           title: 'Home',
           component: HomeScreen,
+          interactivePopGestureEnabled: false,
+          navigationBarHidden: true,
         }}
       />
     );

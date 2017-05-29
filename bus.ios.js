@@ -41,7 +41,7 @@ class BusInformationScreen extends Component {
   }
 
     _onPress = () => {
-        this.props.navigator.push({
+        this.props.navigator.replace({
             title: "BusArrival",
             component: BusArrivalScreen,
             passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}

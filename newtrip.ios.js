@@ -173,7 +173,7 @@ class NewTripScreen extends Component {
         waypoint_order: [] } ],
         status: 'OK' }
 
-        this.props.navigator.push({
+        this.props.navigator.replace({
             title: "Direction",
             component: DirectionScreen,
             passProps: {routeDetails: /*JSON.stringify(this.state.route)*/ JSON.stringify(json), destinationName: this.state.destinationName}
@@ -181,7 +181,7 @@ class NewTripScreen extends Component {
    }
 
    _onDirectionConfirmation = () => {
-       this.props.navigator.push({
+       this.props.navigator.replace({
            title: "Direction",
            component: DirectionScreen,
            passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}

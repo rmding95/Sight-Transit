@@ -23,7 +23,7 @@ class ReverseScreen extends Component {
   }
 
   _onPress = () => {
-    this.props.navigator.push({
+    this.props.navigator.replace({
       title: "Stops Left",
       component: StopCountdownScreen,
       passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops}

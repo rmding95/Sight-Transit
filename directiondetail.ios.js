@@ -40,7 +40,7 @@ class DirectionDetailScreen extends Component {
 
   _onPress = () => {
     this.state.routeDetails.shift();
-    this.props.navigator.push({
+    this.props.navigator.replace({
       title: "Bus Information",
       component: BusInformationScreen,
       passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails}
