@@ -45,7 +45,6 @@ class DirectionScreen extends Component {
                 passProps: {routeSteps: this.state.routeSteps}
             });
         } else {
-            // THIS DOES NOT WORK 
             var BusInformationScreen = require('./busarrival.ios.js');
             this.props.navigator.replace({
                 title: "Bus",
@@ -60,10 +59,10 @@ class DirectionScreen extends Component {
             <View style={styles.container} accessible={true} accessibilityLabel={'Directions to ' + this.state.destinationName 
             + '. It is ' + this.state.destinationDistance.text + ' away and will take ' + this.state.destinationDuration}>
                 <View style={styles.halfHeight}>
-                   {/* <Text style={styles.h1}>Directions to</Text>
+                    <Text style={styles.h1}>Directions to</Text>
                     <Text style={styles.h2}>{this.state.destinationAddress}</Text>
                     <Text style={styles.distance}>{this.state.destinationDistance.text}</Text>
-                    <Text style={styles.duration}>{this.state.destinationDuration.text}</Text> */}
+                    <Text style={styles.duration}>{this.state.destinationDuration.text}</Text> 
                 </View>
 
                 <Button

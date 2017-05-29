@@ -36,12 +36,12 @@ class WalkingDirectionScreen extends Component {
 
     _onPress = () => {
         if (this.state.routeDetails.length == 1) {
-            // var HomeScreen = require('./home.ios.js');
-            // this.props.navigator.replace({
-            //     title: "Home",
-            //     component: HomeScreen
-            // });
-            this.props.navigator.pop();
+            var FinalArrivalScreen = require('./finalarrival.ios.js');
+            this.props.navigator.replace({
+                title: "You Have Arrived",
+                component: FinalArrivalScreen,
+                passProps: {}
+            });
         } else {
             var DirectionDetailScreen = require('./directiondetail.ios.js');
             this.props.navigator.replace({
@@ -85,7 +85,7 @@ class WalkingDirectionScreen extends Component {
     }
 
     componentDidMount() {
-        this._getCurrentLocation();
+        //this._getCurrentLocation();
         this.state.watchID = navigator.geolocation.watchPosition((position) => {
             this._getCurrentLocation();
         }, (error) => {
