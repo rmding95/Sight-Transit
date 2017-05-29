@@ -39,14 +39,14 @@ class DirectionScreen extends Component {
 
     _onPress = () => {
         if (routeSteps[0].type === "WALKING") {
-            this.props.navigator.push({
+            this.props.navigator.replace({
                 title: "Walking",
                 component: WalkingDirectionScreen,
                 passProps: {routeSteps: this.state.routeSteps}
             });
         } else {
             // THIS DOES NOT WORK 
-            this.props.navigator.push({
+            this.props.navigator.replace({
                 title: "Bus",
                 component: BusDirectionScreen,
                 passProps: {routeDetails: this.state.routeSteps}

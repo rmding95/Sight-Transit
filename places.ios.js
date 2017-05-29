@@ -14,7 +14,7 @@ var DirectionScreen = require('./direction.ios.js');
 class PlacesScreen extends Component {
 
   _onPress = (location) => {
-    this.props.navigator.push({
+    this.props.navigator.replace({
       title: "Destination",
       component: DirectionScreen,
       passProps: {myProp: location}

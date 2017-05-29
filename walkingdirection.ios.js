@@ -36,14 +36,15 @@ class WalkingDirectionScreen extends Component {
 
     _onPress = () => {
         if (this.state.routeDetails.length == 1) {
-            var HomeScreen = require('./home.ios.js');
-            this.props.navigator.push({
-                title: "Home",
-                component: HomeScreen
-            });
+            // var HomeScreen = require('./home.ios.js');
+            // this.props.navigator.replace({
+            //     title: "Home",
+            //     component: HomeScreen
+            // });
+            this.props.navigator.pop();
         } else {
             var DirectionDetailScreen = require('./directiondetail.ios.js');
-            this.props.navigator.push({
+            this.props.navigator.replace({
                 title: "Distance From Stop",
                 component: DirectionDetailScreen,
                 passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails}
