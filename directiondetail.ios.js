@@ -36,7 +36,9 @@ class DirectionDetailScreen extends Component {
             dsCache: [],
             weightedDistance: -1,
             currentDirection: props.currentDirection,
-            routeDetails: props.routeDetails
+            routeDetails: props.routeDetails,
+            destinationName: props.destinationName,
+            startAddress: props.startAddress
         }
     }
 
@@ -45,7 +47,7 @@ class DirectionDetailScreen extends Component {
         this.props.navigator.replace({
         title: "Bus Information",
         component: BusInformationScreen,
-        passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails}
+        passProps: {currentDirection: this.state.routeDetails[0], routeDetails: this.state.routeDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
         });
     }
 

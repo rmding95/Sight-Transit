@@ -27,6 +27,7 @@ class NewTripScreen extends Component {
     }
 
    _onPress = () => {
+        this.setState({destinationName: "Placeholder"});
 
         var json = { geocoded_waypoints: 
         [ { geocoder_status: 'OK',
@@ -219,8 +220,6 @@ class NewTripScreen extends Component {
             var lastPosition = JSON.stringify(position);
             this.setState({lastPosition});
         });
-
-        var self = this;
 
         this.subscription = NativeAppEventEmitter.addListener(
             'SpeechToText',

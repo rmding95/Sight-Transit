@@ -17,7 +17,9 @@ class BusArrivalScreen extends Component {
     this.state = {
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails,
-        transitDetails: props.transitDetails
+        transitDetails: props.transitDetails,
+        destinationName: props.destinationName,
+        startAddress: props.startAddress
     };
   }
 
@@ -25,7 +27,7 @@ class BusArrivalScreen extends Component {
     this.props.navigator.replace({
       title: "On Board",
       component: OnBoardScreen,
-      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}
+      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
     });
   }
 

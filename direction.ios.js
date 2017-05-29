@@ -33,6 +33,7 @@ class DirectionScreen extends Component {
       destinationDistance: legs[0].distance,
       destinationDuration: legs[0].duration,
       destinationAddress: legs[0].end_address,
+      startAddress: legs[0].start_address,
       routeSteps: routeInfo.routeSteps
     };
   }
@@ -42,14 +43,14 @@ class DirectionScreen extends Component {
             this.props.navigator.replace({
                 title: "Walking",
                 component: WalkingDirectionScreen,
-                passProps: {routeSteps: this.state.routeSteps}
+                passProps: {routeSteps: this.state.routeSteps, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
             });
         } else {
             var BusInformationScreen = require('./busarrival.ios.js');
             this.props.navigator.replace({
                 title: "Bus",
                 component: BusInformationScreen,
-                passProps: {routeDetails: this.state.routeSteps, currentDirection: this.state.routeSteps[0]}
+                passProps: {routeDetails: this.state.routeSteps, currentDirection: this.state.routeSteps[0], destinationName: this.state.destinationName, startAddress: this.state.startAddress}
             });
         }
     }
@@ -59,7 +60,7 @@ class DirectionScreen extends Component {
             <View style={styles.container} accessible={true} accessibilityLabel={'Directions to ' + this.state.destinationName 
             + '. It is ' + this.state.destinationDistance.text + ' away and will take ' + this.state.destinationDuration}>
                 <View style={styles.halfHeight}>
-                    <Text style={styles.h1}>Directions to</Text>
+                    <Text style={styles.h1}>Directions to {this.state.destinationName}</Text>
                     <Text style={styles.h2}>{this.state.destinationAddress}</Text>
                     <Text style={styles.distance}>{this.state.destinationDistance.text}</Text>
                     <Text style={styles.duration}>{this.state.destinationDuration.text}</Text> 

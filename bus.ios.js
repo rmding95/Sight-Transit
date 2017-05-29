@@ -21,13 +21,12 @@ class BusInformationScreen extends Component {
   constructor(props) {
     super(props);
     var transitDetails = props.currentDirection.transitDetails;
-
-
-
     this.state = {
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails,
-        transitDetails: transitDetails
+        transitDetails: transitDetails,
+        destinationName: props.destinationName,
+        startAddress: props.startAddress
     };
   }
 
@@ -44,7 +43,7 @@ class BusInformationScreen extends Component {
         this.props.navigator.replace({
             title: "Bus Arrival",
             component: BusArrivalScreen,
-            passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails}
+            passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
         });
     }
 

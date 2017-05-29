@@ -18,7 +18,9 @@ class StopCountdownScreen extends Component {
             currentDirection: props.currentDirection,
             routeDetails: props.routeDetails,
             transitDetails: props.transitDetails,
-            numStops: props.numStops
+            numStops: props.numStops,
+            destinationName: props.destinationName,
+            startAddress: props.startAddress
         };
     }
 
@@ -52,14 +54,14 @@ class StopCountdownScreen extends Component {
                 this.props.navigator.replace({
                     title: "Walking",
                     component: WalkingDirectionScreen,
-                    passProps: {routeSteps: this.state.routeDetails}
+                    passProps: {routeSteps: this.state.routeDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
                 });
             } else {
                 var BusInformationScreen = require('./bus.ios.js');
                 this.props.navigator.replace({
                     title: "Bus",
                     component: BusInformationScreen,
-                    passProps: {currentDirection: nextDirection, routeDetails: this.state.routeDetails}
+                    passProps: {currentDirection: nextDirection, routeDetails: this.state.routeDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
                 });
             }
         }

@@ -19,7 +19,9 @@ class OnBoardScreen extends Component {
     this.state = {
         currentDirection: props.currentDirection,
         routeDetails: props.routeDetails,
-        transitDetails: props.transitDetails
+        transitDetails: props.transitDetails,
+        destinationName: props.destinationName,
+        startAddress: props.startAddress
     };
   }
 
@@ -28,7 +30,7 @@ class OnBoardScreen extends Component {
     this.props.navigator.replace({
       title: "Stops Left",
       component: StopCountdownScreen,
-      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops}
+      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
     });
   }
 

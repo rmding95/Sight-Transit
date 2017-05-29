@@ -30,7 +30,9 @@ class WalkingDirectionScreen extends Component {
             currentPosition: 0,
             lastPosition: 0,
             distanceFromObjective: 0,
-            destinationCoords: 0
+            destinationCoords: 0,
+            destinationName: props.destinationName,
+            startAddress: props.startAddress
         };
     }
 
@@ -40,14 +42,14 @@ class WalkingDirectionScreen extends Component {
             this.props.navigator.replace({
                 title: "You Have Arrived",
                 component: FinalArrivalScreen,
-                passProps: {}
+                passProps: {destinationName: this.state.destinationName, startAddress: this.state.startAddress}
             });
         } else {
             var DirectionDetailScreen = require('./directiondetail.ios.js');
             this.props.navigator.replace({
                 title: "Distance From Stop",
                 component: DirectionDetailScreen,
-                passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails}
+                passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
             });
         }
     }
