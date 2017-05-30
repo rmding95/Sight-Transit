@@ -9,6 +9,10 @@ import {
   NavigatorIOS
 } from 'react-native';
 
+let googlePlaceApiKey = "AIzaSyBb7lDyjRIlU7STXU8d4WueMDk5bI3sxrU";
+let googleDirectionApiKey = "AIzaSyBr8DLoX9-BH052cK8WmY7PiV755QhvolE";
+var DirectionScreen = require('./direction.ios.js');
+
 class FinalArrivalScreen extends Component {
 
   constructor(props) {
@@ -24,7 +28,40 @@ class FinalArrivalScreen extends Component {
   }
 
   _reverse = () => {
+    callGooglePlaceApi(this.state.startAddress, this.state.initialPosition).then((response) => {
+        return {location: response.results[0], coords: JSON.parse(this.state.initialPosition)};
+    }, function(error) {
+    }).then((data) => {
+        this.setState({destinationName: data.location.name});
+        this.setState({destinationAddress: data.location.formatted_address});
+        callGoogleDirectionApi(data.coords, data.location.formatted_address).then((response) => {
+            this.setState({route: response});
+        }, function(error) {
+        }).then(() => {
+            this._onDirectionConfirmation();
+        }, function(error) {
 
+        })
+    })
+  }
+
+   _onDirectionConfirmation = () => {
+       this.props.navigator.replace({
+           title: "Direction",
+           component: DirectionScreen,
+           passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
+       });
+   }
+
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+          var initialPosition = JSON.stringify(position);
+          this.setState({initialPosition});
+      },
+      (error) => {},
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
   }
 
   render() {
@@ -51,6 +88,44 @@ class FinalArrivalScreen extends Component {
       </View>
     );
   }
+}
+
+async function callGoogleDirectionApi(origin, destination) {
+    var baseUrl = "https://maps.googleapis.com/maps/api/directions/json?origin=";
+    var url = baseUrl + origin.coords.latitude + "," + origin.coords.longitude + "&destination=" + destination + "&mode=transit&transit_mode=bus&key=" + googleDirectionApiKey
+    try {
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+    }
+}
+
+async function callGooglePlaceApi(query, initialPosition) {
+    var coords = JSON.parse(initialPosition);
+    var baseUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+    // might want to check if we get the initial position
+    var lat = coords.coords.latitude;
+    var long = coords.coords.longitude;
+    var url = baseUrl + query + "&location=" + lat + "," + long + "&key=" + googlePlaceApiKey;
+    try {
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+    }
 }
 
 const styles = StyleSheet.create({
