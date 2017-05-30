@@ -10,7 +10,8 @@ import {
   Button,
   NativeAppEventEmitter,
   TouchableHighlight,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 var DirectionScreen = require('./direction.ios.js');
@@ -23,7 +24,11 @@ let googleDirectionApiKey = "AIzaSyBr8DLoX9-BH052cK8WmY7PiV755QhvolE";
 class NewTripScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' , talking: false};
+        this.state = {
+            talking: false,
+            savingLocation: props.savingLocation,
+            saveName: props.saveName
+        };
     }
 
    _onPress = () => {
@@ -174,19 +179,33 @@ class NewTripScreen extends Component {
         waypoint_order: [] } ],
         status: 'OK' }
 
-        this.props.navigator.replace({
-            title: "Direction",
-            component: DirectionScreen,
-            passProps: {routeDetails: /*JSON.stringify(this.state.route)*/ JSON.stringify(json), destinationName: this.state.destinationName}
-        });
+        var destName = "Placeholder";
+
+        if (this.state.savingLocation) {
+            AsyncStorage.setItem(this.state.saveName, JSON.stringify(json));
+            AsyncStorage.setItem(this.state.saveName + 'Destination', destName);
+            this.props.navigator.pop();
+       } else {
+            this.props.navigator.replace({
+                title: "Direction",
+                component: DirectionScreen,
+                passProps: {routeDetails: /*JSON.stringify(this.state.route)*/ JSON.stringify(json), destinationName: destName}
+            });
+       }
    }
 
    _onDirectionConfirmation = () => {
-       this.props.navigator.replace({
-           title: "Direction",
-           component: DirectionScreen,
-           passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
-       });
+       if (this.state.savingLocation) {
+            AsyncStorage.setItem(this.state.saveName, JSON.stringify(this.state.route));
+            AsyncStorage.setItem(this.state.saveName + 'Destination', this.state.destinationName);
+            this.props.navigator.pop();
+       } else {
+        this.props.navigator.replace({
+            title: "Direction",
+            component: DirectionScreen,
+            passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
+        });
+       }
    }
 
    _talk = () => {
@@ -205,6 +224,14 @@ class NewTripScreen extends Component {
                 {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
            );
        }
+   }
+
+   componentWillMount() {
+        if (typeof this.state.savingLocation != 'undefined') {
+            this.setState({saveName: this.state.saveName});
+        } else {
+            this.setState({savingLocation: false});
+        }
    }
 
    componentDidMount() {
