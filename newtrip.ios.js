@@ -288,11 +288,8 @@ class NewTripScreen extends Component {
         return (
             <View>
             <View style={styles.container} accessible={true} accessibilityLabel={'Where are you headed?'}>
-                <View>
-                    <Text style={styles.header}>Where are you headed? </Text>
-                </View>
                 <TouchableHighlight onPress={() => this._talk()}>
-                    <View style={styles.square}>
+                    <View style={styles.square} accessible={true} accessibilityLabel={'Tap to voice input a desination'}>
                         <Image style={styles.talkButton} source={require('./img/002-sound.png')} />
                     </View>
                 </TouchableHighlight>
@@ -300,6 +297,9 @@ class NewTripScreen extends Component {
                 
           </View>
           <View>
+                <View>
+                    <Text style={styles.header}>Where are you headed? </Text>
+                </View>
               <Button
                     onPress={() => this._onPress()}
                     title="Continue"
@@ -360,7 +360,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'APHont',
         marginLeft: 30,
-        color: '#2a2a2a'
+        color: '#2a2a2a',
+        paddingBottom: 20
     },
     square: {
         width: 300,

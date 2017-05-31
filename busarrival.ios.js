@@ -33,7 +33,7 @@ class BusArrivalScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container} accessible={true} accessibilityLabel={'Your bus ' + this.state.transitDetails.line.short_name + 'is arriving'}>
+      <View style={styles.container} accessibilityTraits='button' accessible={true} accessibilityLabel={'Bus ' + this.state.transitDetails.line.short_name + 'is arriving'}>
           <TouchableHighlight onPress={() => this._onPress()}>
             <View>
             <Text style={styles.title}>

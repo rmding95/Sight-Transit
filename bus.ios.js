@@ -49,15 +49,15 @@ class BusInformationScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + this.state.transitDetails.arrivalTime.text}>
-                <View style={styles.halfHeight}>
+            <View style={styles.container} >
+                <View style={styles.halfHeight} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + this.state.transitDetails.arrivalTime.text}>
                     <Text>Your next bus {this.state.transitDetails.line.short_name}</Text>
                     <Text>Arrives at {this.state.transitDetails.arrivalTime.text} </Text>
                 </View>
                 
                 <Button
                     onPress={() => this._onPress()}
-                    title="Alert Drivers"
+                    title="Alert Driver"
                     accessibilityLabel="Alert Driver"
                 />
             </View>
