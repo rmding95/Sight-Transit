@@ -11,6 +11,7 @@ import {
 import BeaconBroadcast from 'react-native-ibeacon-simulator';
 
 var StopCountdownScreen = require('./stopcountdown.ios.js');
+var RerouteScreen = require('./reroute.ios.js');
 
 class OnBoardScreen extends Component {
 
@@ -25,13 +26,21 @@ class OnBoardScreen extends Component {
     };
   }
 
-  _onPress = () => {
+  _onPress = (status) => {
     BeaconBroadcast.stopAdvertisingBeacon();
-    this.props.navigator.replace({
-      title: "Stops Left",
-      component: StopCountdownScreen,
-      passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
-    });
+    if (status == 'Yes') {
+      this.props.navigator.replace({
+        title: "Stops Left",
+        component: StopCountdownScreen,
+        passProps: {currentDirection: this.state.currentDirection, routeDetails: this.state.routeDetails, transitDetails: this.state.transitDetails, numStops: this.state.transitDetails.numStops, destinationName: this.state.destinationName, startAddress: this.state.startAddress}
+      });
+    } else {
+      this.props.navigator.replace({
+        title: "Rerouting...",
+        component: RerouteScreen,
+        passProps: {endLocation: this.state.routeDetails[this.state.routeDetails.length - 1].endLocation, destinationName: this.state.destinationName}
+      })
+    }
   }
 
 render() {

@@ -32,8 +32,8 @@ class FinalArrivalScreen extends Component {
         return {location: response.results[0], coords: JSON.parse(this.state.initialPosition)};
     }, function(error) {
     }).then((data) => {
-        this.setState({destinationName: data.location.name});
-        this.setState({destinationAddress: data.location.formatted_address});
+        this.setState({newDestinationName: data.location.name});
+        this.setState({newDestinationAddress: data.location.formatted_address});
         callGoogleDirectionApi(data.coords, data.location.formatted_address).then((response) => {
             this.setState({route: response});
         }, function(error) {
@@ -49,7 +49,7 @@ class FinalArrivalScreen extends Component {
        this.props.navigator.replace({
            title: "Direction",
            component: DirectionScreen,
-           passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
+           passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.newDestinationName}
        });
    }
 
