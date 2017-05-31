@@ -63,6 +63,10 @@ class BusInformationScreen extends Component {
         }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.state.timerID);
+    }
+
     render() {
         return (
             <View style={styles.container} >

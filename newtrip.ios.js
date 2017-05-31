@@ -12,7 +12,7 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   Image,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 
 var DirectionScreen = require('./direction.ios.js');
