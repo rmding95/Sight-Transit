@@ -50,9 +50,9 @@ class PlacesScreen extends Component {
 
     render() {
         return (
-          <View style={styles.container} accessible={true} accessibilityLabel={'Home'}>
+          <View style={styles.container}>
             <TouchableHighlight onPress={() => this._onPress('Home')}>
-              <View style={styles.box1}>
+              <View style={styles.box1} accessible={true} accessibilityLabel={'Home'}>
                 <Text style={{fontSize: 36,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>HOME</Text>
               </View>
             </TouchableHighlight>
