@@ -48,10 +48,6 @@ class RerouteScreen extends Component {
         );
     }
 
-    componentDidMount() {
-
-    }
-
     render() {
         return (
             <View style={styles.container} accessible={true} accessibilityLabel={"Recalculating Route"}>
