@@ -303,11 +303,6 @@ class NewTripScreen extends Component {
                 <View>
                     <Text style={styles.header}>Where are you headed? </Text>
                 </View>
-              <Button
-                    onPress={() => this._onPress()}
-                    title="Continue"
-                    accessibilityLabel="Continue"
-                />
              </View>
             </View>
               

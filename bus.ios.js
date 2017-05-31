@@ -54,7 +54,7 @@ class BusInformationScreen extends Component {
     componentDidUpdate() {
         if (this.state.timer < 1) {
             clearInterval(this.state.timerID);
-            
+
             this.props.navigator.replace({
                 title: "Bus Arrival",
                 component: BusArrivalScreen,
@@ -64,11 +64,15 @@ class BusInformationScreen extends Component {
     }
 
     render() {
+        var expectedTime = new Date(this.state.transitDetails.arrivalTime.value * 1000);
+        var actualTime = new Date();        
+        var min = (expectedTime.getHours() - actualTime.getHours()) * 60 + expectedTime.getMinutes() - actualTime.getMinutes();
+
         return (
             <View style={styles.container} >
                 <View style={styles.halfHeight} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + this.state.transitDetails.arrivalTime.text}>
                     <Text style={styles.details}>Your next bus {this.state.transitDetails.line.short_name}</Text>
-                    <Text style={styles.details}>Arrives in {this.state.transitDetails.arrivalTime.text} minutes</Text>
+                    <Text style={styles.details}>Arrives in {min} minutes</Text>
                 </View>
             </View>
         );

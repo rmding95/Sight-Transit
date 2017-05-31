@@ -48,7 +48,6 @@ class StopCountdownScreen extends Component {
 
             this.state.routeDetails.shift();
             var nextDirection = this.state.routeDetails[0];
-
             if (nextDirection.type == "WALKING") {
                 var WalkingDirectionScreen = require('./walkingdirection.ios.js');
                 this.props.navigator.replace({

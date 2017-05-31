@@ -37,8 +37,8 @@ class OnBoardScreen extends Component {
 render() {
         return (
           <View style={styles.container}>
-            <TouchableHighlight onPress={() => this._onPress('Are You On Board')}>
-              <View style={styles.box1} accessible={true} accessibilityLabel={'Are you onboard the bus?'}>
+            <TouchableHighlight onPress={() => this._onPress('Are You On Board')} accessibilityTraits='text' accessible={true} accessibilityLabel={'Are you onboard the bus?'}>
+              <View style={styles.box1}>
                 <Text style={{fontSize: 24,color: '#2a2a2a',fontFamily: 'APHont'}}>Are you onboard?</Text>
               </View>
             </TouchableHighlight>
