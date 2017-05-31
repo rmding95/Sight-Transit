@@ -63,6 +63,10 @@ class BusInformationScreen extends Component {
         }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.state.timerID);
+    }
+
     render() {
         var expectedTime = new Date(this.state.transitDetails.arrivalTime.value * 1000);
         var actualTime = new Date();        

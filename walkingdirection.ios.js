@@ -54,7 +54,6 @@ class WalkingDirectionScreen extends Component {
         }
     }
 
-    // on press got called 3 times???
     _directionPress = () => {
         if (this.state.steps.length == 1) {
             this._onPress();
@@ -76,7 +75,6 @@ class WalkingDirectionScreen extends Component {
                 var distance = geolib.getDistance(this.state.currentPosition.coords, this.state.destinationCoords, 1, 1);
                 this.setState({distanceFromObjective: distance});
 
-                // threshold for considering the user arrived at destination is 10 meters
                 if (distance <= 10.0) {
                     this._directionPress();
                 }
@@ -93,7 +91,6 @@ class WalkingDirectionScreen extends Component {
                 var distance = geolib.getDistance(this.state.currentPosition.coords, this.state.destinationCoords, 1, 1);
                 this.setState({distanceFromObjective: distance});
 
-                // threshold for considering the user arrived at destination is 10 meters
                 if (distance <= 10.0) {
                     this._directionPress();
                 }
@@ -107,23 +104,17 @@ class WalkingDirectionScreen extends Component {
         navigator.geolocation.clearWatch(this.state.watchID);
     }
 
-
-
     render() {
         return (
             <View style={styles.container}> 
                 <TouchableHighlight onPress={() => this._directionPress()}>
-                    <View style={styles.content} accessible ={true} accessibilityLabel={this.state.steps[0].description}>
-                        <Text style={styles.directions}>{this.state.steps[0].description}</Text>
-                        
+                    <View style={styles.content} accessible={true} accessibilityLabel={this.state.steps[0].description}>
+                        <Text style={styles.directions}>{this.state.steps[0].description}</Text>                      
                     </View>
-                </TouchableHighlight>     
-        
-               {/* <Button
-                    onPress={() => this._onPress()}
-                    title="Continue"
-                    accessibilityLabel="Continue"
-                />*/}
+                </TouchableHighlight>
+                <View style={styles.content} accessible={true} accessibilityLabel={'You are ' + this.state.distanceFromObjective + ' meters away'}>
+                    <Text style={styles.directions} accessible={true}>You are {this.state.distanceFromObjective} meters away</Text>
+                </View>     
             </View>
         );
     }
@@ -146,7 +137,7 @@ const styles = StyleSheet.create({
     },
     directions: {
         fontFamily: 'APHont',
-        fontSize: 60
+        fontSize: 50
     }
 });
 
