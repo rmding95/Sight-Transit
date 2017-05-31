@@ -45,20 +45,20 @@ class OnBoardScreen extends Component {
 
 render() {
         return (
-          <View style={styles.container} accessible={true} accessibilityLabel={'Are you onboard the bus?'}>
+          <View style={styles.container}>
             <TouchableHighlight onPress={() => this._onPress('Are You On Board')}>
-              <View style={styles.box1}>
+              <View style={styles.box1} accessible={true} accessibilityLabel={'Are you onboard the bus?'}>
                 <Text style={{fontSize: 24,color: '#2a2a2a',fontFamily: 'APHont'}}>Are you onboard?</Text>
               </View>
             </TouchableHighlight>
 
-            <TouchableHighlight onPress={() => this._onPress('Yes')}>
+            <TouchableHighlight onPress={() => this._onPress('Yes')} accessibilityTraits='button'>
               <View style={styles.box2} accessible={true} accessibilityLabel={'Yes'}>
                 <Text style={{fontSize: 60,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>YES</Text>
               </View>
             </TouchableHighlight>
 
-            <TouchableHighlight onPress={() => this._onPress('No')}>
+            <TouchableHighlight onPress={() => this._onPress('No')} accessibilityTraits='button'>
               <View style={styles.box3} accessible={true} accessibilityLabel={'No'}>
                 <Text style={{fontSize: 60,fontWeight: 'bold',color: '#f9ec00',fontFamily: 'APHont'}}>NO</Text>
               </View>

@@ -10,6 +10,7 @@ import {
   Button,
   NativeAppEventEmitter,
   TouchableHighlight,
+  TouchableWithoutFeedback,
   Image,
   AsyncStorage
 } from 'react-native';
@@ -25,7 +26,6 @@ class NewTripScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            talking: false,
             savingLocation: props.savingLocation,
             saveName: props.saveName
         };
@@ -200,30 +200,29 @@ class NewTripScreen extends Component {
             AsyncStorage.setItem(this.state.saveName + 'Destination', this.state.destinationName);
             this.props.navigator.pop();
        } else {
-        this.props.navigator.replace({
-            title: "Direction",
-            component: DirectionScreen,
-            passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
-        });
+            this.props.navigator.replace({
+                title: "Direction",
+                component: DirectionScreen,
+                passProps: {routeDetails: JSON.stringify(this.state.route), destinationName: this.state.destinationName}
+            });
        }
    }
 
-   _talk = () => {
-       if (this.state.talking) {
-           this.state.talking = false;
-           SpeechToText.finishRecognition();
-       } else {
-           this.state.talking = true;
-           SpeechToText.startRecognition("en-US");
-           navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    var initialPosition = JSON.stringify(position);
-                    this.setState({initialPosition});
-                },
-                (error) => alert(error.message),
-                {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-           );
-       }
+   handlePressIn = () => {
+       SpeechToText.startRecognition("en-US");
+       
+       navigator.geolocation.getCurrentPosition(
+            (position) => {
+                var initialPosition = JSON.stringify(position);
+                this.setState({initialPosition});
+            },
+            (error) => alert(error.message),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+       );
+   }
+
+   handlePressOut = () => {
+       SpeechToText.finishRecognition();
    }
 
    componentWillMount() {
@@ -288,18 +287,22 @@ class NewTripScreen extends Component {
         return (
             <View>
             <View style={styles.container} accessible={true} accessibilityLabel={'Where are you headed?'}>
-                <View>
-                    <Text style={styles.header}>Where are you headed? </Text>
-                </View>
-                <TouchableHighlight onPress={() => this._talk()}>
+                <TouchableWithoutFeedback
+                    accessibilityTraits='button'
+                    accessible={true}
+                    accessibilityLabel={'Press and hold to voice input a desination. Release the button when you are done'}
+                    onPressIn={this.handlePressIn}
+                    onPressOut={this.handlePressOut}>
                     <View style={styles.square}>
                         <Image style={styles.talkButton} source={require('./img/002-sound.png')} />
                     </View>
-                </TouchableHighlight>
-
+                </TouchableWithoutFeedback>
                 
           </View>
-          <View>
+          <View style={{justifyContent:'space-between'}}>
+                <View>
+                    <Text style={styles.header}>Where are you headed? </Text>
+                </View>
               <Button
                     onPress={() => this._onPress()}
                     title="Continue"
@@ -353,14 +356,15 @@ async function callGoogleDirectionApi(origin, destination) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 200
+        marginTop: 150
     },
     header: {
         fontSize: 24,
         fontWeight: 'bold',
         fontFamily: 'APHont',
         marginLeft: 30,
-        color: '#2a2a2a'
+        color: '#2a2a2a',
+        paddingBottom: 20
     },
     square: {
         width: 300,

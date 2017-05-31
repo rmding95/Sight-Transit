@@ -139,7 +139,7 @@ class DirectionDetailScreen extends Component {
         const {beacon_dataSource, arrived} = this.state;
         if (arrived || beacon_dataSource.getRowCount() == 0) {
             return (
-                <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at your stop'}>
+                <View style={styles.container} accessibilityTraits='button' accessible={true} accessibilityLabel={'You have arrived at your stop'}>
                     <TouchableHighlight onPress={() => this._onPress()}>
                     <View>
                     <Text style={styles.title}>
@@ -156,7 +156,7 @@ class DirectionDetailScreen extends Component {
             );
         } else {
             return (
-                <View style={styles.container} accessible={true}
+                <View style={styles.container} accessibilityTraits='button' accessible={true}
                 accessibilityLabel={'Your stop is in' + (beacon_dataSource.accuracy? beacon_dataSource.accuracy.toFixed(0) : 'not found')}>
                 <ListView
                     dataSource={beacon_dataSource}

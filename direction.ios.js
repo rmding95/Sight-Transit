@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Button,
-  ListView
+  ListView,
+  TouchableHighlight
 } from 'react-native';
 
 var WalkingDirectionScreen = require('./walkingdirection.ios.js');
@@ -57,20 +58,20 @@ class DirectionScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container} accessible={true} accessibilityLabel={'Directions to ' + this.state.destinationName 
-            + '. It is ' + this.state.destinationDistance.text + ' away and will take ' + this.state.destinationDuration}>
-                <View style={styles.halfHeight}>
+            <View style={styles.container}>
+                <View style={styles.halfHeight} accessible={true} accessibilityLabel={'Directions to ' + this.state.destinationName 
+            + '. It is ' + this.state.destinationDistance.text + ' away and will take ' + this.state.destinationDuration.text}>
                     <Text style={styles.h1}>Directions to {this.state.destinationName}</Text>
                     <Text style={styles.h2}>{this.state.destinationAddress}</Text>
                     <Text style={styles.distance}>{this.state.destinationDistance.text}</Text>
                     <Text style={styles.duration}>{this.state.destinationDuration.text}</Text> 
                 </View>
 
-                <Button
-                    onPress={() => this._onPress()}
-                    title="Continue"
-                    accessibilityLabel="Continue"
-                />
+                <TouchableHighlight onPress={() => this._onPress()}>
+                  <View style={styles.box1} accessible={true} accessibilityLabel={'Continue'}>
+                    <Text style={{fontSize: 24,fontWeight: 'bold',color: '#fff',fontFamily: 'APHont'}}>CONTINUE</Text>
+                  </View>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         flex: 1,
+        justifyContent: 'space-between'
     },
     halfHeight: {
         marginTop: 120,
@@ -149,22 +151,12 @@ const styles = StyleSheet.create({
     duration: {
         fontSize: 70,
         fontFamily: 'APHont'
-    },
-    list: {
-        marginLeft:30,
-        fontFamily: 'APHont',
-        fontSize: 16,
-        borderTopWidth: StyleSheet.hairlineWidth,
-        borderTopColor: 'black'
-    },
-    separator: {
-        marginTop: 30,
-        marginBottom: 30,
-        borderTopWidth: StyleSheet.hairlineWidth,
-        borderWidth: 1,
-        borderTopColor: '#2a2a2a',
-        width:414
-
+    },  
+    box1: {
+        backgroundColor: '#2a2a2a',
+        height: 100,
+        justifyContent: 'center', 
+        alignItems: 'center' 
     }
 });
 

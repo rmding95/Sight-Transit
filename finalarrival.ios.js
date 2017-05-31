@@ -66,11 +66,11 @@ class FinalArrivalScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container} accessible={true} accessibilityLabel={'You have arrived at'}>
+      <View style={styles.container}>
 
-          <View>
+          <View accessible={true} accessibilityLabel={'You have arrived at' + this.state.destinationName + '. Return to where you came from?'}>
             <Text style={styles.title}>
-                You have arrived at {this.state.destinationName}
+                You've arrived at {this.state.destinationName}. Return to where you came from?
             </Text>
           </View>
 
@@ -131,12 +131,12 @@ async function callGooglePlaceApi(query, initialPosition) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0023ff'
+    backgroundColor: '#fff'
   },
   title: {
     fontSize: 36,
     fontWeight: 'normal',
-    color: '#f9ec00',
+    color: '#2a2a2a',
     fontFamily: 'APHont',
     marginTop: 100,
     marginLeft: 30

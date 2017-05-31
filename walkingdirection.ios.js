@@ -114,16 +114,16 @@ class WalkingDirectionScreen extends Component {
             <View style={styles.container}> 
                 <TouchableHighlight onPress={() => this._directionPress()}>
                     <View style={styles.content} accessible ={true} accessibilityLabel={this.state.steps[0].description}>
-                        <Text>{this.state.steps[0].description}</Text>
-                        <Text>{this.state.currentPosition.coords ? this.state.currentPosition.coords.latitude : null} {this.state.currentPosition.coords ? this.state.currentPosition.coords.longitude : null}</Text>
+                        <Text style={styles.directions}>{this.state.steps[0].description}</Text>
+                        
                     </View>
                 </TouchableHighlight>     
         
-                <Button
+               {/* <Button
                     onPress={() => this._onPress()}
                     title="Continue"
                     accessibilityLabel="Continue"
-                />
+                />*/}
             </View>
         );
     }
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         flex: 1,
+        padding: 20
     },
     halfHeight: {
         flex: 0.5,
@@ -140,14 +141,12 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         marginTop: 100
     },
-    list: {
-        flex: 1,
-        flexDirection: 'row',
-        padding: 20
-    },
-
     content: {
         marginTop: 100,
+    },
+    directions: {
+        fontFamily: 'APHont',
+        fontSize: 60
     }
 });
 
