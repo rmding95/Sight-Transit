@@ -260,7 +260,8 @@ class NewTripScreen extends Component {
                     }).then((data) => {
                         this.setState({destinationName: data.location.name});
                         this.setState({destinationAddress: data.location.formatted_address});
-                        callGoogleDirectionApi(data.coords, data.location.formatted_address).then((response) => {
+                        console.log(this.state.savingLocation);
+                        callGoogleDirectionApi(data.coords, data.location.formatted_address, this.state.savingLocation).then((response) => {
                             this.setState({route: response});
                         }, function(error) {
                         }).then(() => {
@@ -331,9 +332,14 @@ async function callGooglePlaceApi(query, initialPosition) {
     }
 }
 
-async function callGoogleDirectionApi(origin, destination) {
+async function callGoogleDirectionApi(origin, destination, savingLocation) {
     var baseUrl = "https://maps.googleapis.com/maps/api/directions/json?origin=";
-    var url = baseUrl + origin.coords.latitude + "," + origin.coords.longitude + "&destination=" + destination + "&mode=transit&transit_mode=bus&key=" + googleDirectionApiKey
+    var url = '';
+    if (savingLocation) {
+        url = baseUrl + origin.coords.latitude + "," + origin.coords.longitude + "&destination=" + destination + "&departure_time=1496285800&mode=transit&transit_mode=bus&key=" + googleDirectionApiKey;
+    } else {
+        url = baseUrl + origin.coords.latitude + "," + origin.coords.longitude + "&destination=" + destination + "&mode=transit&transit_mode=bus&key=" + googleDirectionApiKey;
+    }
     try {
         let response = await fetch(url, {
             method: 'GET',
