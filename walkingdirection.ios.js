@@ -20,7 +20,15 @@ class WalkingDirectionScreen extends Component {
         var leg = props.routeSteps[0];
         var steps = [];
         leg.substeps.forEach(function(element) {
-            steps.push({description: striptags(element.description), endLocation: element.endLocation});
+            if (element.description.includes("<div")) {
+                var splitIndex = element.description.indexOf("<div");
+                var firstStep = striptags(element.description.substr(0, splitIndex));
+                var secondStep = striptags(element.description.substr(splitIndex));
+                steps.push({description: firstStep + '\n\n' + secondStep, endLocation: element.endLocation});
+
+            } else {
+                steps.push({description: striptags(element.description), endLocation: element.endLocation});
+            }
         }, this);
         this.state = {
             currentDirection: props.routeSteps[0],
@@ -137,7 +145,7 @@ const styles = StyleSheet.create({
     },
     directions: {
         fontFamily: 'APHont',
-        fontSize: 50
+        fontSize: 32
     }
 });
 
