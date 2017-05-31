@@ -131,12 +131,12 @@ async function callGooglePlaceApi(query, initialPosition) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0023ff'
+    backgroundColor: '#fff'
   },
   title: {
     fontSize: 36,
     fontWeight: 'normal',
-    color: '#f9ec00',
+    color: '#2a2a2a',
     fontFamily: 'APHont',
     marginTop: 100,
     marginLeft: 30
