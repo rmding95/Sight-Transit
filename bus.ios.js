@@ -57,8 +57,8 @@ class BusInformationScreen extends Component {
                 
                 <Button
                     onPress={() => this._onPress()}
-                    title="Alert Drivers"
-                    accessibilityLabel="Alert Driver"
+                    title="Continue"
+                    accessibilityLabel="Continue"
                 />
             </View>
         );
