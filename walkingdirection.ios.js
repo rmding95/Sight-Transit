@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         flex: 1,
+        padding: 20
     },
     halfHeight: {
         flex: 0.5,
@@ -140,18 +141,12 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         marginTop: 100
     },
-    list: {
-        flex: 1,
-        flexDirection: 'row',
-        padding: 20
-    },
-
     content: {
         marginTop: 100,
     },
     directions: {
         fontFamily: 'APHont',
-        fontSize: 24
+        fontSize: 60
     }
 });
 

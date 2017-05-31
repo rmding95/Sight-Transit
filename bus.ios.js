@@ -51,13 +51,8 @@ class BusInformationScreen extends Component {
         return (
             <View style={styles.container} >
                 <View style={styles.halfHeight} accessible={true} accessibilityLabel={'Your next bus ' + this.state.transitDetails.line.short_name + ' arrives at ' + this.state.transitDetails.arrivalTime.text}>
-<<<<<<< HEAD
-                    <Text>Your next bus {this.state.transitDetails.line.short_name}</Text>
-                    <Text>Arrives in {this.state.transitDetails.arrivalTime.text} minutes</Text>
-=======
                     <Text style={styles.details}>Your next bus {this.state.transitDetails.line.short_name}</Text>
                     <Text style={styles.details}>Arrives in {this.state.transitDetails.arrivalTime.text} minutes</Text>
->>>>>>> 561165417429f490ff1c5cad69c8e82c5d672f0f
                 </View>
                 
                 <Button
@@ -73,7 +68,7 @@ class BusInformationScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         marginTop: 10,
-        flex: 1,
+        flex: 1
     },
     halfHeight: {
         marginTop: 120,

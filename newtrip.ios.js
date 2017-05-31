@@ -296,7 +296,7 @@ class NewTripScreen extends Component {
 
                 
           </View>
-          <View>
+          <View style={{justifyContent:'space-between'}}>
                 <View>
                     <Text style={styles.header}>Where are you headed? </Text>
                 </View>
@@ -353,7 +353,7 @@ async function callGoogleDirectionApi(origin, destination) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 200
+        marginTop: 150
     },
     header: {
         fontSize: 24,
